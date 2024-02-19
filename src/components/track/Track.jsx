@@ -1,3 +1,5 @@
+import "./track.css";
+
 function TrackTitleImg() {
   return (
     <div className="track__title-image">
@@ -7,6 +9,7 @@ function TrackTitleImg() {
     </div>
   );
 }
+
 function TrackTitleText(props) {
   return (
     <div className="track__title-text">
@@ -17,6 +20,7 @@ function TrackTitleText(props) {
     </div>
   );
 }
+
 export function TrackTitle(props) {
   return (
     <div className="track__title">
@@ -25,6 +29,7 @@ export function TrackTitle(props) {
     </div>
   );
 }
+
 export function TrackAuthor(props) {
   return (
     <div className="track__author">
@@ -34,6 +39,7 @@ export function TrackAuthor(props) {
     </div>
   );
 }
+
 export function TrackAlbum(props) {
   return (
     <div className="track__album">
@@ -43,6 +49,7 @@ export function TrackAlbum(props) {
     </div>
   );
 }
+
 export function TrackTime(props) {
   return (
     <div className="track__time">
