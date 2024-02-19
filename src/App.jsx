@@ -1,23 +1,16 @@
 import "./App.css";
-import { Menu } from "./components/Menu";
+import { Navigation } from "./components/Navigator";
+import { Audioplayer } from "./components/Audioplayer";
+import { Track } from "./components/TrackList";
+import { tracks } from "./utils/tracks";
+import { Sidebar } from "./components/Sidebar";
 
-
-function App(props) {
+function App() {
   return (
     <div className="wrapper">
       <div className="container">
         <main className="main">
-          <nav className="main__nav nav">
-            <div className="nav__logo logo">
-              <img className="logo__image" src="img/logo.png" alt="logo" />
-            </div>
-            <div className="nav__burger burger">
-              <span className="burger__line"></span>
-              <span className="burger__line"></span>
-              <span className="burger__line"></span>
-            </div>
-            <Menu />
-          </nav>
+          <Navigation />
           <div className="main__centerblock centerblock">
             <div className="centerblock__search search">
               <svg className="search__svg">
@@ -53,53 +46,20 @@ function App(props) {
                 </div>
               </div>
               <div className="content__playlist playlist">
-                {/* <Track /> */}
+                {tracks.map((track) => (
+                  <Track
+                    title={track.name}
+                    author={track.author}
+                    album={track.album}
+                    time={track.duration_in_seconds}
+                  />
+                ))}
               </div>
             </div>
           </div>
-          <div className="main__sidebar sidebar">
-            <div className="sidebar__personal">
-              <p className="sidebar__personal-name">Sergey.Ivanov</p>
-              <div className="sidebar__icon">
-                <svg alt="logout">
-                  <use xlinkHref="img/icon/sprite.svg#logout"></use>
-                </svg>
-              </div>
-            </div>
-            <div className="sidebar__block">
-              <div className="sidebar__list">
-                <div className="sidebar__item">
-                  <a className="sidebar__link" href="/">
-                    <img
-                      className="sidebar__img"
-                      src="img/playlist01.png"
-                      alt="day's playlist"
-                    />
-                  </a>
-                </div>
-                <div className="sidebar__item">
-                  <a className="sidebar__link" href="/">
-                    <img
-                      className="sidebar__img"
-                      src="img/playlist02.png"
-                      alt="day's playlist"
-                    />
-                  </a>
-                </div>
-                <div className="sidebar__item">
-                  <a className="sidebar__link" href="/">
-                    <img
-                      className="sidebar__img"
-                      src="img/playlist03.png"
-                      alt="day's playlist"
-                    />
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
+          <Sidebar />
         </main>
-        {/* <Audioplayer /> */}
+        <Audioplayer />
         <footer className="footer"></footer>
       </div>
     </div>
