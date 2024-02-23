@@ -1,8 +1,9 @@
 import { tracks } from "../../utils/tracks";
+import { Filter } from "../filterItem/Filter";
 import { Track } from "../trackList/TrackList";
 import "./centerblock.css";
 
-function ContentTitle() {
+const ContentTitle = () => {
   return (
     <div className="content__title playlist-title">
       <div className="playlist-title__col col01">Трек</div>
@@ -17,7 +18,7 @@ function ContentTitle() {
   );
 }
 
-function Search() {
+const Search = () => {
   return (
     <div className="centerblock__search search">
       <svg className="search__svg">
@@ -33,18 +34,7 @@ function Search() {
   );
 }
 
-function Filter() {
-  return (
-    <div className="centerblock__filter filter">
-      <div className="filter__title">Искать по:</div>
-      <div className="filter__button button-author _btn-text">исполнителю</div>
-      <div className="filter__button button-year _btn-text">году выпуска</div>
-      <div className="filter__button button-genre _btn-text">жанру</div>
-    </div>
-  );
-}
-
-export function Centerblock() {
+export function Centerblock({isLoading}) {
   return (
     <div className="main__centerblock centerblock">
       <Search />
@@ -54,7 +44,7 @@ export function Centerblock() {
         <ContentTitle />
         <div className="content__playlist playlist">
           {tracks.map((track) => (
-            <Track
+            <Track isLoading = {isLoading}
               key={track.id}
               title={track.name}
               author={track.author}

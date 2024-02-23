@@ -1,17 +1,21 @@
-import { sidebarItem } from "../../utils/sidebarItem";
+import Skeleton from "react-loading-skeleton";
 import "./sidebar.css";
 
-function SidebarItem(props) {
+const SidebarItem = () => {
   return (
     <div className="sidebar__item">
-      <a className="sidebar__link" href={props.link}>
-        <img className="sidebar__img" src={props.img} alt={props.description} />
+      <a className="sidebar__link" href="/">
+        <img
+          className="sidebar__img"
+          src="/img/playlist01.png"
+          alt="day's playlist"
+        />
       </a>
     </div>
   );
-}
+};
 
-function Personal() {
+const Personal = () => {
   return (
     <div className="sidebar__personal">
       <p className="sidebar__personal-name">Sergey.Ivanov</p>
@@ -22,22 +26,41 @@ function Personal() {
       </div>
     </div>
   );
-}
+};
 
-export function Sidebar() {
+export function Sidebar(props) {
   return (
     <div className="main__sidebar sidebar">
-      <Personal />
+      {props.isLoading ? (
+        <Skeleton
+          width={"240px"}
+          height={"70px"}
+          baseColor="transparent"
+          highlightColor="transparent"
+        />
+      ) : (
+        <Personal />
+      )}
       <div className="sidebar__block">
         <div className="sidebar__list">
-          {sidebarItem.map((item, index) => (
-            <SidebarItem
-              key={index}
-              link={item.sidebarLink}
-              img={item.img.sidebarImg}
-              description={item.description}
-            />
-          ))}
+          {props.isLoading ? (
+            <Skeleton width={"240px"} height={"130px"} baseColor="grey" />
+          ) : (
+            <SidebarItem />
+          )}
+          ;
+          {props.isLoading ? (
+            <Skeleton width={"240px"} height={"130px"} baseColor="grey" />
+          ) : (
+            <SidebarItem />
+          )}
+          ;
+          {props.isLoading ? (
+            <Skeleton width={"240px"} height={"130px"} baseColor="grey" />
+          ) : (
+            <SidebarItem />
+          )}
+          ;
         </div>
       </div>
     </div>

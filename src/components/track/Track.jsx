@@ -1,6 +1,6 @@
 import "./track.css";
 
-function TrackTitleImg() {
+const TrackTitleImg = () => {
   return (
     <div className="track__title-image">
       <svg className="track__title-svg" alt="music">
@@ -10,7 +10,7 @@ function TrackTitleImg() {
   );
 }
 
-function TrackTitleText(props) {
+const TrackTitleText = (props) => {
   return (
     <div className="track__title-text">
       <a className="track__title-link" href="http://">

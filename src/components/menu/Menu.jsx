@@ -1,7 +1,7 @@
 import { menu } from "../../utils/menu";
 import "./menu.css";
 
-function MenuItem(props) {
+const MenuItem = (props) => {
   return (
     <li className="menu__item">
       <a href={props.link} className="menu__link">
