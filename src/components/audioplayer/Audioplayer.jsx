@@ -12,7 +12,7 @@ import {
 import { VolumeBlock } from "../volumeBlock/VolumeBlock";
 import "./audioplayer.css";
 
-export function Audioplayer() {
+export const Audioplayer = () => {
   return (
     <div className="bar">
       <div className="bar__content">
@@ -40,4 +40,4 @@ export function Audioplayer() {
       </div>
     </div>
   );
-}
+};

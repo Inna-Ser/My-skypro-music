@@ -4,6 +4,8 @@ import { Audioplayer } from "./components/audioplayer/Audioplayer";
 import { Sidebar } from "./components/sidebar/Sidebar";
 import { Centerblock } from "./components/centerblock/Centerblock";
 import { useEffect, useState } from "react";
+import { Contaner, Wrapper } from "./App.styled";
+import { GlobalStyles } from "./Global.styled";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -11,17 +13,20 @@ function App() {
     setTimeout(() => setIsLoading(false), 5000);
   }, []);
   return (
-    <div className="wrapper">
-      <div className="container">
-        <main className="main">
-          <Navigation />
-          <Centerblock isLoading={isLoading} />
-          <Sidebar isLoading={isLoading} />
-        </main>
-        <Audioplayer />
-        <footer className="footer"></footer>
-      </div>
-    </div>
+    <>
+      <GlobalStyles />
+      <Wrapper>
+        <Contaner>
+          <main className="main">
+            <Navigation />
+            <Centerblock isLoading={isLoading} />
+            <Sidebar isLoading={isLoading} />
+          </main>
+          <Audioplayer />
+          <footer className="footer"></footer>
+        </Contaner>
+      </Wrapper>
+    </>
   );
 }
 

@@ -2,34 +2,47 @@ import { useState } from "react";
 import { filterYears } from "../../utils/filterYears";
 import { tracks } from "../../utils/tracks";
 import "./filter.css";
+import {
+  CenterblockFilter,
+  FilterButton,
+  FilterListContaner,
+  FilterListGenre,
+  FilterTitle,
+  FilterWrapper,
+  FiltrListItem,
+} from "./Filtr.styled";
 
 const FilterAuthor = () => {
   return (
-    <ul className="filter__type">
+    <FilterListContaner>
       {tracks.map(({ author }) => (
-        <li>{author}</li>
+        <FiltrListItem>{author}</FiltrListItem>
       ))}
-    </ul>
+    </FilterListContaner>
   );
 };
 
 const FilterYear = () => {
   return (
-    <ul className="filter__type">
+    <FilterListContaner>
       {filterYears.map(({ year }) => (
-        <li>{year}</li>
+        <FiltrListItem>{year}</FiltrListItem>
       ))}
-    </ul>
+    </FilterListContaner>
   );
 };
 
-const FilterGenre = () => {
+const FilterGenre = ({ tracks }) => {
+  const arrGenre = tracks.map((item) => item.genre);
+  const uniqueGenre = [...new Set(arrGenre)];
   return (
-    <ul className="filter__type">
-      {tracks.map(({ genre }) => (
-        <li>{genre}</li>
-      ))}
-    </ul>
+    <FilterListGenre>
+      <FilterListContaner>
+        {uniqueGenre.map((genre, index) => (
+          <FiltrListItem key={index}>{genre} </FiltrListItem>
+        ))}
+      </FilterListContaner>
+    </FilterListGenre>
   );
 };
 
@@ -45,35 +58,32 @@ export const Filter = () => {
   };
 
   return (
-    <div className="centerblock__filter filter">
-      <div className="filter__title">Искать по:</div>
-      <div className="filter__wrapper">
-        <div
+    <CenterblockFilter>
+      <FilterTitle>Искать по:</FilterTitle>
+      <FilterWrapper>
+        <FilterButton
           onClick={() => toggleVisibility("author")}
-          className="filter__button button-author _btn-text"
         >
           исполнителю
-        </div>
+        </FilterButton>
         {visible === "author" && <FilterAuthor />}
-      </div>
-      <div className="filter__wrapper">
-        <div
+      </FilterWrapper>
+      <FilterWrapper>
+        <FilterButton
           onClick={() => toggleVisibility("years")}
-          className="filter__button button-year _btn-text"
         >
           году выпуска
-        </div>
+        </FilterButton>
         {visible === "years" && <FilterYear />}
-      </div>
-      <div className="filter__wrapper">
-        <div
+      </FilterWrapper>
+      <FilterWrapper>
+        <FilterButton
           onClick={() => toggleVisibility("genre")}
-          className="filter__button button-genre _btn-text"
         >
           жанру
-        </div>
-        {visible === "genre" && <FilterGenre />}
-      </div>
-    </div>
+        </FilterButton>
+        {visible === "genre" && <FilterGenre tracks={tracks} />}
+      </FilterWrapper>
+    </CenterblockFilter>
   );
 };

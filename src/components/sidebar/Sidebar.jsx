@@ -28,7 +28,7 @@ const Personal = () => {
   );
 };
 
-export function Sidebar(props) {
+export const Sidebar = (props) => {
   return (
     <div className="main__sidebar sidebar">
       {props.isLoading ? (
@@ -65,4 +65,4 @@ export function Sidebar(props) {
       </div>
     </div>
   );
-}
+};

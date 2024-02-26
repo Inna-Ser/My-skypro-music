@@ -1,5 +1,5 @@
 import "./burgerLine.css";
 
-export function BurgerLine() {
+export const BurgerLine = () => {
   return <span className="burger__line"></span>;
-}
+};

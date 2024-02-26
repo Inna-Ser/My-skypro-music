@@ -1,6 +1,6 @@
 import "./audioplayerItems.css";
 
-export function Prev() {
+export const Prev = () => {
   return (
     <div className="player__btn-prev">
       <svg className="player__btn-prev-svg" alt="prev">
@@ -8,9 +8,9 @@ export function Prev() {
       </svg>
     </div>
   );
-}
+};
 
-export function Play() {
+export const Play = () => {
   return (
     <div className="player__btn-play _btn">
       <svg className="player__btn-play-svg" alt="play">
@@ -18,9 +18,9 @@ export function Play() {
       </svg>
     </div>
   );
-}
+};
 
-export function Next() {
+export const Next = () => {
   return (
     <div className="player__btn-next">
       <svg className="player__btn-next-svg" alt="next">
@@ -28,9 +28,9 @@ export function Next() {
       </svg>
     </div>
   );
-}
+};
 
-export function Repeat() {
+export const Repeat = () => {
   return (
     <div className="player__btn-repeat _btn-icon">
       <svg className="player__btn-repeat-svg" alt="repeat">
@@ -38,9 +38,9 @@ export function Repeat() {
       </svg>
     </div>
   );
-}
+};
 
-export function Shuffle() {
+export const Shuffle = () => {
   return (
     <div className="player__btn-shuffle _btn-icon">
       <svg className="player__btn-shuffle-svg" alt="shuffle">
@@ -48,9 +48,9 @@ export function Shuffle() {
       </svg>
     </div>
   );
-}
+};
 
-export function TrackPlayImage() {
+export const TrackPlayImage = () => {
   return (
     <div className="track-play__image">
       <svg className="track-play__svg" alt="music">
@@ -58,7 +58,7 @@ export function TrackPlayImage() {
       </svg>
     </div>
   );
-}
+};
 
 export function TrackPlayAuthor() {
   return (

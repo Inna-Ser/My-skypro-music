@@ -1,24 +1,30 @@
 import { menu } from "../../utils/menu";
+import { MenuLink, MenuList, MenuListItem, NavigatorMenu } from "./Menu.styled";
 import "./menu.css";
 
 const MenuItem = (props) => {
   return (
-    <li className="menu__item">
-      <a href={props.link} className="menu__link">
+    <MenuListItem $active={props.active}>
+      <MenuLink $active={props.active} href={props.link}>
         {props.title}
-      </a>
-    </li>
+      </MenuLink>
+    </MenuListItem>
   );
-}
+};
 
-export function Menu() {
+export const Menu = () => {
   return (
-    <div className="nav__menu menu">
-      <ul className="menu__list">
+    <NavigatorMenu>
+      <MenuList>
         {menu.map((item, index) => (
-          <MenuItem key={index} link={item.link} title={item.title} />
+          <MenuItem
+            key={index}
+            link={item.link}
+            title={item.title}
+            active={index === 0}
+          />
         ))}
-      </ul>
-    </div>
+      </MenuList>
+    </NavigatorMenu>
   );
-}
+};

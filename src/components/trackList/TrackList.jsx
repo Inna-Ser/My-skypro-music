@@ -3,7 +3,7 @@ import { TrackAlbum, TrackAuthor, TrackTime, TrackTitle } from "../track/Track";
 import "./trackList.css";
 import "react-loading-skeleton/dist/skeleton.css";
 
-export function Track(props) {
+export const Track = (props) => {
   return (
     <div className="playlist__item">
       <div className="playlist__track track">
@@ -30,4 +30,4 @@ export function Track(props) {
       </div>
     </div>
   );
-}
+};

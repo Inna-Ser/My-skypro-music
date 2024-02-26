@@ -6,7 +6,7 @@
     margin-right: 15px;
   }
   
-  .filter__button {
+  /* .filter__button {
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
@@ -18,9 +18,9 @@
   
   .filter__button:not(:last-child) {
     margin-right: 10px;
-  }
+  } */
 
-  .centerblock__filter {
+  /* .centerblock__filter {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -32,9 +32,9 @@
     -ms-flex-align: center;
     align-items: center;
     margin-bottom: 51px;
-  }
+  } */
 
-  .filter__type {
+  /* .filter__type {
     max-height: 305px;
   position: absolute;
   top: 50px;
@@ -48,11 +48,7 @@
   gap: 10px;
   overflow: auto;
   }
-  .filter__type li:hover {
-text-decoration: underline;
-color: #bb5ee2;
-  }
-
-  .filter__wrapper {
+   */
+  /* .filter__wrapper {
     position: relative;
-  }
+  } */

@@ -16,7 +16,7 @@ const ContentTitle = () => {
       </div>
     </div>
   );
-}
+};
 
 const Search = () => {
   return (
@@ -32,9 +32,9 @@ const Search = () => {
       />
     </div>
   );
-}
+};
 
-export function Centerblock({isLoading}) {
+export const Centerblock = ({ isLoading }) => {
   return (
     <div className="main__centerblock centerblock">
       <Search />
@@ -44,7 +44,8 @@ export function Centerblock({isLoading}) {
         <ContentTitle />
         <div className="content__playlist playlist">
           {tracks.map((track) => (
-            <Track isLoading = {isLoading}
+            <Track
+              isLoading={isLoading}
               key={track.id}
               title={track.name}
               author={track.author}
@@ -56,4 +57,4 @@ export function Centerblock({isLoading}) {
       </div>
     </div>
   );
-}
+};

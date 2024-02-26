@@ -1,6 +1,6 @@
 import "./volumeBlock.css";
 
-export function VolumeBlock() {
+export const VolumeBlock = () => {
   return (
     <div className="bar__volume-block volume">
       <div className="volume__content">
@@ -19,4 +19,4 @@ export function VolumeBlock() {
       </div>
     </div>
   );
-}
+};
