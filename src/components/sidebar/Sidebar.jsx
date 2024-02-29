@@ -1,16 +1,17 @@
 import Skeleton from "react-loading-skeleton";
 import "./sidebar.css";
+import { Link } from "react-router-dom";
 
-const SidebarItem = () => {
+const SidebarItem = ({ id }) => {
   return (
     <div className="sidebar__item">
-      <a className="sidebar__link" href="/">
+      <Link className="sidebar__link" to={`/category/${id}`}>
         <img
           className="sidebar__img"
           src="/img/playlist01.png"
           alt="day's playlist"
         />
-      </a>
+      </Link>
     </div>
   );
 };
@@ -46,19 +47,19 @@ export const Sidebar = (props) => {
           {props.isLoading ? (
             <Skeleton width={"240px"} height={"130px"} baseColor="grey" />
           ) : (
-            <SidebarItem />
+            <SidebarItem id={1} />
           )}
           ;
           {props.isLoading ? (
             <Skeleton width={"240px"} height={"130px"} baseColor="grey" />
           ) : (
-            <SidebarItem />
+            <SidebarItem id={2} />
           )}
           ;
           {props.isLoading ? (
             <Skeleton width={"240px"} height={"130px"} baseColor="grey" />
           ) : (
-            <SidebarItem />
+            <SidebarItem id={3} />
           )}
           ;
         </div>

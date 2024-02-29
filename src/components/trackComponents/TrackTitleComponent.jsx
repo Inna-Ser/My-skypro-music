@@ -1,4 +1,4 @@
-import "./trackTitle.css";
+import "./trackTitleComponent.css";
 
 export const TrackTitleImg = () => {
   return (
@@ -20,4 +20,3 @@ export const TrackTitleText = (props) => {
     </div>
   );
 };
-

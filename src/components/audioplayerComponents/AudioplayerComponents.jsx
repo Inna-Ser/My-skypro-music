@@ -1,4 +1,4 @@
-import "./audioplayerItems.css";
+import "./audioplayerComponents.css";
 
 export const Prev = () => {
   return (

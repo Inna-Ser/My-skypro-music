@@ -5,14 +5,6 @@ export const MenuListItem = styled.li `
     margin-bottom: 16px;
 `
 
-export const MenuLink = styled.a `
-color: #ffffff;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 24px;
-    color: ${(props) => props.$active ? "#bb5ee2" : "white"};
-`
-
 export const NavigatorMenu = styled.div `
 display: block;
     visibility: visible;

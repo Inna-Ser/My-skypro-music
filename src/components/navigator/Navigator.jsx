@@ -22,4 +22,4 @@ export const Navigation = () => {
       {visible && <Menu link={menu.link} title={menu.title} />}
     </nav>
   );
-}
+};

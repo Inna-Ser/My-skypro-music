@@ -1,7 +1,6 @@
-import { tracks } from "../../utils/tracks";
 import { Filter } from "../filterItem/Filter";
-import { Track } from "../trackList/TrackList";
 import "./centerblock.css";
+import { PlayList } from "../playList/PlayList";
 
 const ContentTitle = () => {
   return (
@@ -42,18 +41,7 @@ export const Centerblock = ({ isLoading }) => {
       <Filter />
       <div className="centerblock__content">
         <ContentTitle />
-        <div className="content__playlist playlist">
-          {tracks.map((track) => (
-            <Track
-              isLoading={isLoading}
-              key={track.id}
-              title={track.name}
-              author={track.author}
-              album={track.album}
-              time={track.duration_in_seconds}
-            />
-          ))}
-        </div>
+        <PlayList isLoading={isLoading} />
       </div>
     </div>
   );

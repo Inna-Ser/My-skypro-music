@@ -1,42 +1,43 @@
-import { TrackTitleImg, TrackTitleText } from "./TrackTitle";
+import Skeleton from "react-loading-skeleton";
+import {
+  TrackAlbum,
+  TrackAuthor,
+  TrackTime,
+  TrackTitle,
+} from "../trackComponents/TrackComponents";
 import "./track.css";
+import "react-loading-skeleton/dist/skeleton.css";
+import { useParams } from "react-router-dom";
+import { tracks } from "../../utils/tracks";
 
-export const TrackTitle = (props) => {
-  return (
-    <div className="track__title">
-      <TrackTitleImg />
-      <TrackTitleText title={props.title} />
-    </div>
-  );
-};
+export const Track = (props) => {
+  const params = useParams();
+  const track = tracks.find((track) => track.id === Number(params.id));
 
-export const TrackAuthor = (props) => {
   return (
-    <div className="track__author">
-      <a className="track__author-link" href="http://">
-        {props.author}
-      </a>
-    </div>
-  );
-};
-
-export const TrackAlbum = (props) => {
-  return (
-    <div className="track__album">
-      <a className="track__album-link" href="http://">
-        {props.album}
-      </a>
-    </div>
-  );
-};
-
-export const TrackTime = (props) => {
-  return (
-    <div className="track__time">
-      <svg className="track__time-svg" alt="time">
-        <use xlinkHref="img/icon/sprite.svg#icon-like"></use>
-      </svg>
-      <span className="track__time-text">{props.time}</span>
+    <div className="playlist__item">
+      <div className="playlist__track track">
+        {props.isLoading ? (
+          <Skeleton width={"50px"} height={"50px"} baseColor="grey" />
+        ) : (
+          <TrackTitle title={props.title} />
+        )}
+        {props.isLoading ? (
+          <Skeleton width={"350px"} height={"20px"} baseColor="grey" />
+        ) : (
+          <TrackAuthor author={props.author} />
+        )}
+        {props.isLoading ? (
+          <Skeleton width={"305px"} height={"20px"} baseColor="grey" />
+        ) : (
+          <TrackAlbum album={props.album} />
+        )}
+        {props.isLoading ? (
+          <Skeleton width={"320px"} height={"20px"} baseColor="grey" />
+        ) : (
+          <TrackTime time={props.time} />
+        )}
+      </div>
     </div>
   );
 };

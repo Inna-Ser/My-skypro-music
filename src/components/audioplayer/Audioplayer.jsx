@@ -1,14 +1,4 @@
-import {
-  Next,
-  Play,
-  Prev,
-  Repeat,
-  Shuffle,
-  TrackPlayAlbum,
-  TrackPlayAuthor,
-  TrackPlayImage,
-  TrackPlayLike,
-} from "../audioplayerItems/audioplayerItems";
+import { Next, Play, Prev, Repeat, Shuffle, TrackPlayAlbum, TrackPlayAuthor, TrackPlayImage, TrackPlayLike } from "../audioplayerComponents/AudioplayerComponents";
 import { VolumeBlock } from "../volumeBlock/VolumeBlock";
 import "./audioplayer.css";
 
