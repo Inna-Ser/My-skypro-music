@@ -4,7 +4,7 @@ import { BurgerLine } from "../burgerLine/BurgerLine";
 import { Menu } from "../menu/Menu";
 import "./navigator.css";
 
-export const Navigation = () => {
+export const Navigator = () => {
   const [visible, setVisible] = useState(true);
 
   const toggleVisibility = () => setVisible(!visible);

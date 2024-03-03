@@ -43,6 +43,7 @@
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    flex-direction: column;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
     -ms-flex-direction: column;
@@ -65,14 +66,7 @@
     align-items: center;
   }
   
-  .sidebar__item {
-    width: 250px;
-    height: 150px;
-  }
   
-  .sidebar__item:not(:last-child) {
-    margin-bottom: 30px;
-  }
   
   .sidebar__link {
     width: 100%;

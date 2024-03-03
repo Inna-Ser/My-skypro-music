@@ -2,20 +2,21 @@ import { Routes, Route } from "react-router-dom";
 import { Main } from "./pages/main/Main";
 import { MyPlayList } from "./pages/myPlayList/AppPlayList";
 import { NotFound } from "./pages/notFound";
-import { AppEnter } from "./pages/enter/AppEnter";
 import { Category } from "./pages/category/Category";
-import { Account } from "./pages/account/Account";
 import { ProtectRoute } from "./components/protectedRoute/ProtectedRoute";
+import { Login } from "./pages/login/Login";
+import { Register } from "./pages/register/Register";
 
 export const AppRoutes = ({ user }) => {
   return (
     <Routes>
-      <Route path="/" element={<Main />} />
-      <Route path="/playList" element={<MyPlayList />} />
-      <Route path="/category/:id" element={<Category />} />
-      <Route path="/enter" element={<AppEnter />} />
+      <Route path="/login" element={<Login />} />
       <Route element={<ProtectRoute isAlloved={Boolean(user)} />}>
-        <Route path="/account" element={<Account />} />
+        <Route path="/" element={<Main />} />
+        <Route path="/playList" element={<MyPlayList />} />
+        <Route path="/category/:id" element={<Category />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/registr" elemeht={<Register />} />
       </Route>
       <Route path="*" element={<NotFound />} />
     </Routes>

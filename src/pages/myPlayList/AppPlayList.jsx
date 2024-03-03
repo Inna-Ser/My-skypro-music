@@ -1,10 +1,10 @@
-import { Navigation } from "../../components/navigator/Navigator";
+import { Navigator } from "../../components/navigator/Navigator";
 import { PlayList } from "../../components/playList/PlayList";
 
 export const MyPlayList = ({ isLoading }) => {
   return (
     <div>
-      <Navigation />
+      <Navigator />
       <PlayList isLoading={isLoading} />
     </div>
   );

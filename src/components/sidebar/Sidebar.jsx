@@ -1,33 +1,13 @@
 import Skeleton from "react-loading-skeleton";
 import "./sidebar.css";
-import { Link } from "react-router-dom";
-
-const SidebarItem = ({ id }) => {
-  return (
-    <div className="sidebar__item">
-      <Link className="sidebar__link" to={`/category/${id}`}>
-        <img
-          className="sidebar__img"
-          src="/img/playlist01.png"
-          alt="day's playlist"
-        />
-      </Link>
-    </div>
-  );
-};
-
-const Personal = () => {
-  return (
-    <div className="sidebar__personal">
-      <p className="sidebar__personal-name">Sergey.Ivanov</p>
-      <div className="sidebar__icon">
-        <svg alt="logout">
-          <use xlinkHref="img/icon/sprite.svg#logout"></use>
-        </svg>
-      </div>
-    </div>
-  );
-};
+import { Personal } from "./personal/Personal";
+import {
+  SidebarItem1,
+  SidebarItem2,
+  SidebarItem3,
+  SidebarList,
+} from "../sidebarList/SidebarList";
+import { categories } from "../../utils/categories";
 
 export const Sidebar = (props) => {
   return (
@@ -47,19 +27,7 @@ export const Sidebar = (props) => {
           {props.isLoading ? (
             <Skeleton width={"240px"} height={"130px"} baseColor="grey" />
           ) : (
-            <SidebarItem id={1} />
-          )}
-          ;
-          {props.isLoading ? (
-            <Skeleton width={"240px"} height={"130px"} baseColor="grey" />
-          ) : (
-            <SidebarItem id={2} />
-          )}
-          ;
-          {props.isLoading ? (
-            <Skeleton width={"240px"} height={"130px"} baseColor="grey" />
-          ) : (
-            <SidebarItem id={3} />
+            <SidebarList category={categories} />
           )}
           ;
         </div>

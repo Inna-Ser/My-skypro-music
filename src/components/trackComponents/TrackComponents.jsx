@@ -1,4 +1,4 @@
-import { TrackTitleImg, TrackTitleText } from "./TrackTitleComponent";
+import { TrackTitleImg, TrackTitleText } from "./trackTitleComponent/TrackTitleComponent";
 import "./trackComponents.css";
 
 export const TrackTitle = (props) => {

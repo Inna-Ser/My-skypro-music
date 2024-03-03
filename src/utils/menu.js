@@ -7,11 +7,7 @@ export const menu = [{
         title: "Мой плейлист"
     },
     {
-        link: "/inter",
-        title: "Войти"
+        link: "/login",
+        title: "Выйти"
     },
-    {
-        link: "/account",
-        title: "Account"
-    }
 ];
