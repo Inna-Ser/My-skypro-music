@@ -1,8 +1,8 @@
-  .player__btn-prev,
-  .player__btn-play,
-  .player__btn-next,
-  .player__btn-repeat,
-  .player__btn-shuffle {
+  .playerBtnPrev,
+  .playerBtnPlay,
+  .playerBtnNext,
+  .playerBtnRepeat,
+  .playerBtnShuffle {
     padding: 5px;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -12,49 +12,49 @@
     align-items: center;
   }
   
-  .player__btn-prev {
+  .playerBtnPrev {
     margin-right: 23px;
   }
   
-  .player__btn-prev-svg {
+  .playerBtnPrevSvg {
     width: 15px;
     height: 14px;
   }
   
-  .player__btn-play {
+  .playerBtnPlay {
     margin-right: 23px;
   }
 
-  .player__btn-play-svg {
+  .playerBtnPlaySvg {
     width: 22px;
     height: 20px;
     fill: #d9d9d9;
   }
   
-  .player__btn-next {
+  .playerBtnNext {
     margin-right: 28px;
     fill: #a53939;
   }
   
-  .player__btn-next-svg {
+  .playerBtnNextSvg {
     width: 15px;
     height: 14px;
     fill: inherit;
     stroke: #d9d9d9;
   }
   
-  .player__btn-repeat {
+  .playerBtnRepeat {
     margin-right: 24px;
   }
   
-  .player__btn-repeat-svg {
+  .playerBtnRepeatSvg {
     width: 18px;
     height: 12px;
     fill: transparent;
     stroke: #696969;
   }
   
-  .player__btn-shuffle {
+  .playerBtnShuffle {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -63,14 +63,14 @@
     align-items: center;
   }
   
-  .player__btn-shuffle-svg {
+  .playerBtnShuffleSvg {
     width: 19px;
     height: 12px;
     fill: transparent;
     stroke: #696969;
   }
   
-  .track-play__image {
+  .trackPlayImage {
     width: 51px;
     height: 51px;
     background-color: #313131;
@@ -90,21 +90,21 @@
     grid-area: image;
   }
   
-  .track-play__svg {
+  .trackPlaySvg {
     width: 18px;
     height: 17px;
     fill: transparent;
     stroke: #4e4e4e;
   }
   
-  .track-play__author {
+  .trackPlayAuthor {
     -ms-grid-row: 1;
     -ms-grid-column: 2;
     grid-area: author;
     min-width: 49px;
   }
   
-  .track-play__author-link {
+  .trackPlayAuthorLink {
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
@@ -113,14 +113,14 @@
     white-space: nowrap;
   }
   
-  .track-play__album {
+  .trackPlayAlbum {
     -ms-grid-row: 2;
     -ms-grid-column: 2;
     grid-area: album;
     min-width: 49px;
   }
   
-  .track-play__album-link {
+  .trackPlayAlbumLink {
     font-style: normal;
     font-weight: 400;
     font-size: 13px;
@@ -128,7 +128,7 @@
     color: #ffffff;
   }
   
-  .track-play__like-dis {
+  .trackPlayLikeDis {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -142,23 +142,23 @@
     margin-left: 26%;
   }
   
-  .track-play__like,
-  .track-play__dislike {
+  .trackPlayLike,
+  .trackPlayDislike {
     padding: 5px;
   }
   
-  .track-play__like-svg {
+  .trackPlayLikeSvg {
     width: 14px;
     height: 12px;
     fill: transparent;
     stroke: #696969;
   }
   
-  .track-play__dislike {
+  .trackPlayDislike {
     margin-left: 28.5px;
   }
   
-  .track-play__dislike-svg {
+  .trackPlayDislikeSvg {
     width: 14.34px;
     height: 13px;
     fill: transparent;

@@ -6,7 +6,7 @@ import {
   SidebarItem2,
   SidebarItem3,
   SidebarList,
-} from "../sidebarList/SidebarList";
+} from "./sidebarList/SidebarList";
 import { categories } from "../../utils/categories";
 
 export const Sidebar = (props) => {
@@ -29,7 +29,6 @@ export const Sidebar = (props) => {
           ) : (
             <SidebarList category={categories} />
           )}
-          ;
         </div>
       </div>
     </div>

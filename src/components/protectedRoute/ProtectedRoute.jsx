@@ -1,8 +1,8 @@
 import { Navigate, Outlet } from "react-router-dom";
 
-export const ProtectRoute = ({ redirectPatch = "/", isAlloved }) => {
+export const ProtectRoute = ({ redirectPatch = "/login", isAlloved }) => {
   if (!isAlloved) {
-    <Navigate to={redirectPatch} replace={true} />;
+    return <Navigate to={redirectPatch} replace={true} />;
   }
   return <Outlet />;
 };

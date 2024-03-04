@@ -1,10 +1,8 @@
 import { useEffect, useState } from "react";
-import { Navigator } from "../../components/navigator/Navigator";
-import {Centerblock} from "../../components/centerblock/Centerblock";
-import { Sidebar } from "../../components/sidebar/Sidebar";
-import { Audioplayer } from "../../components/audioplayer/Audioplayer";
-
-
+import { Navigator } from "../components/navigator/Navigator";
+import { Centerblock } from "../components/centerblock/Centerblock";
+import { Sidebar } from "../components/sidebar/Sidebar";
+import { Audioplayer } from "../components/audioplayer/Audioplayer";
 
 export const Main = () => {
   const [isLoading, setIsLoading] = useState(true);

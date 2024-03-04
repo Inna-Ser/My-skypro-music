@@ -1,4 +1,4 @@
-.centerblock__search {
+.centerblockSearch {
     width: 100%;
     border-bottom: 1px solid #4e4e4e;
     margin-bottom: 51px;
@@ -14,7 +14,7 @@
     align-items: center;
   }
   
-  .centerblock__h2 {
+  .centerblockH2 {
     font-style: normal;
     font-weight: 400;
     font-size: 64px;
@@ -23,7 +23,7 @@
     margin-bottom: 45px;
   }
   
-  .centerblock__content {
+  .centerblockContent {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -33,7 +33,7 @@
     flex-direction: column;
   }
   
-  .search__svg {
+  .searchSvg {
     width: 17px;
     height: 17px;
     margin-right: 5px;
@@ -41,7 +41,7 @@
     fill: transparent;
   }
   
-  .search__text {
+  .searchText {
     -webkit-box-flex: 100;
     -ms-flex-positive: 100;
     flex-grow: 100;
@@ -55,7 +55,7 @@
     color: #ffffff;
   }
   
-  .search__text::-webkit-input-placeholder {
+  .searchText::-webkit-input-placeholder {
     background-color: transparent;
     color: #ffffff;
     font-style: normal;
@@ -64,7 +64,7 @@
     line-height: 24px;
   }
   
-  .search__text:-ms-input-placeholder {
+  .searchText:-ms-input-placeholder {
     background-color: transparent;
     color: #ffffff;
     font-style: normal;
@@ -73,7 +73,7 @@
     line-height: 24px;
   }
   
-  .search__text::-ms-input-placeholder {
+  .searchText::-ms-input-placeholder {
     background-color: transparent;
     color: #ffffff;
     font-style: normal;
@@ -82,7 +82,7 @@
     line-height: 24px;
   }
   
-  .search__text::placeholder {
+  .searchText::placeholder {
     background-color: transparent;
     color: #ffffff;
     font-style: normal;
@@ -91,7 +91,7 @@
     line-height: 24px;
   }
   
-  .content__title {
+  .contentTitle {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -108,7 +108,7 @@
     margin-bottom: 24px;
   }
   
-  .playlist-title__col {
+  .contentTitleCol {
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
@@ -118,7 +118,7 @@
     text-transform: uppercase;
   }
   
-  .playlist-title__svg {
+  .playlistTitleSvg {
     width: 12px;
     height: 12px;
     fill: transparent;
@@ -142,13 +142,13 @@
     text-align: end;
   }
   
-  .playlist__item {
+  .playlistItem {
     width: 100%;
     display: block;
     margin-bottom: 12px;
   }
   
-  .playlist__track {
+  .playlistTrack {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;

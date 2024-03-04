@@ -1,5 +1,5 @@
-import { Navigator } from "../../components/navigator/Navigator";
-import { PlayList } from "../../components/playList/PlayList";
+import { Navigator } from "../components/navigator/Navigator";
+import { PlayList } from "../components/playList/PlayList";
 
 export const MyPlayList = ({ isLoading }) => {
   return (

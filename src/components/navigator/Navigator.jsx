@@ -2,7 +2,8 @@ import { useState } from "react";
 import { menu } from "../../utils/menu";
 import { BurgerLine } from "../burgerLine/BurgerLine";
 import { Menu } from "../menu/Menu";
-import "./navigator.css";
+import classNames from "classnames";
+import styles from "./Navigator.module.css";
 
 export const Navigator = () => {
   const [visible, setVisible] = useState(true);
@@ -10,11 +11,14 @@ export const Navigator = () => {
   const toggleVisibility = () => setVisible(!visible);
 
   return (
-    <nav className="main__nav nav">
-      <div className="nav__logo logo">
-        <img className="logo__image" src="img/logo.png" alt="logo" />
+    <nav className={classNames(styles.mainNav, styles.nav)}>
+      <div className={classNames(styles.navLogo, styles.logo)}>
+        <img className={styles.logoImage} src="/img/logo.png" alt="logo" />
       </div>
-      <div onClick={toggleVisibility} className="nav__burger burger">
+      <div
+        onClick={toggleVisibility}
+        className={classNames(styles.navBurger, styles.burger)}
+      >
         <BurgerLine />
         <BurgerLine />
         <BurgerLine />

@@ -1,7 +1,7 @@
-.Login {
+.login {
 }
 
-.Login__block {
+.login__block {
     position: fixed;
     display: flex;
   top: 50%;
@@ -16,6 +16,6 @@
   align-items: center;
 }
 
-.Login__title {
+.login__title {
     color: blue;
 }

@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
-import { Navigator } from "../../components/navigator/Navigator";
-import { categories } from "../../utils/categories";
+import { Navigator } from "../components/navigator/Navigator";
+import { categories } from "../utils/categories";
 
 // const categoryGenre = {
 //   1: "Плейлист дня",

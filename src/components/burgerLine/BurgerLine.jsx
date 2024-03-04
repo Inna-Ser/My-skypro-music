@@ -1,5 +1,4 @@
-import "./burgerLine.css";
-
+import styles from "./BurgerLine.module.css";
 export const BurgerLine = () => {
-  return <span className="burger__line"></span>;
+  return <span className={styles.burgerLine}></span>;
 };

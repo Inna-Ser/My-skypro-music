@@ -48,8 +48,6 @@ body {
   color: #ffffff;
 }
 
-
-
 ._btn-icon:hover svg {
   fill: transparent;
   stroke: #acacac;
@@ -74,4 +72,10 @@ body {
   stroke: #ffffff;
   cursor: pointer;
 }
+
+.navlink.active {
+  color: #9260b8;
+  text-decoration: underline;
+}
+
 `

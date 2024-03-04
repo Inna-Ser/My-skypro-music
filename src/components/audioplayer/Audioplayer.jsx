@@ -1,15 +1,25 @@
-import { Next, Play, Prev, Repeat, Shuffle, TrackPlayAlbum, TrackPlayAuthor, TrackPlayImage, TrackPlayLike } from "../audioplayerComponents/AudioplayerComponents";
+import {
+  Next,
+  Play,
+  Prev,
+  Repeat,
+  Shuffle,
+  TrackPlayAlbum,
+  TrackPlayAuthor,
+  TrackPlayImage,
+  TrackPlayLike,
+} from "../audioplayerComponents/AudioplayerComponents";
 import { VolumeBlock } from "../volumeBlock/VolumeBlock";
-import "./audioplayer.css";
+import stiles from "./Audioplayer.module.css";
 
 export const Audioplayer = () => {
   return (
-    <div className="bar">
-      <div className="bar__content">
-        <div className="bar__player-progress"></div>
-        <div className="bar__player-block">
-          <div className="bar__player player">
-            <div className="player__controls">
+    <div className={stiles.bar}>
+      <div className={stiles.barContent}>
+        <div className={stiles.barPlayerProgress}></div>
+        <div className={stiles.barPlayerBlock}>
+          <div className={stiles.barPlayer}>
+            <div className={stiles.playerControls}>
               <Prev />
               <Play />
               <Next />
@@ -17,8 +27,8 @@ export const Audioplayer = () => {
               <Shuffle />
             </div>
             <TrackPlayImage />
-            <div className="player__track-play track-play">
-              <div className="track-play__contain">
+            <div className={stiles.playerTrackPlay}>
+              <div className={stiles.trackPlayContain}>
                 <TrackPlayAuthor />
               </div>
               <TrackPlayAlbum />

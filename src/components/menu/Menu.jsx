@@ -1,27 +1,27 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { menu } from "../../utils/menu";
-import { MenuList, MenuListItem, NavigatorMenu } from "./Menu.styled";
+import styles from "./Menu.module.css";
 import "./menu.css";
+import classNames from "classnames";
 
 const MenuItem = (props) => {
-  
   return (
-    <MenuListItem>
-      <NavLink className="menu__link" to={props.link}>
+    <li className={styles.menuListItem}>
+      <NavLink className={styles.menuLink} to={props.link} exact>
         {props.title}
       </NavLink>
-    </MenuListItem>
+    </li>
   );
 };
 
 export const Menu = () => {
   return (
-    <NavigatorMenu>
-      <MenuList>
+    <div className={styles.navigatorMenu}>
+      <ul className={styles.menuList}>
         {menu.map((item, index) => (
           <MenuItem key={index} link={item.link} title={item.title} />
         ))}
-      </MenuList>
-    </NavigatorMenu>
+      </ul>
+    </div>
   );
 };
