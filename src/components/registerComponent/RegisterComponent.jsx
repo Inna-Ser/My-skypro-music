@@ -1,15 +1,17 @@
-import { useNavigate } from "react-router-dom";
-import styles from "./RegisterComponent.module.css";
+import { Link, useNavigate } from "react-router-dom";
+import styles from "../loginComponent/LoginComponent.module.css";
 
 export const RegisterComponent = () => {
   const comeBack = useNavigate();
   const handleComeBackClick = () => {
-    comeBack("/", { replace: true });
+    comeBack("/login", { replace: true });
   };
   return (
-    <div>
-      <button onClick={handleComeBackClick}>Back to pre page</button>
-      <h1 className={styles.title__register}>Страница регистрации</h1>
+    <div className={styles.login}>
+      <div className={styles.loginBlock}>
+        <h1 className={styles.loginTitle}>Страница регистрации</h1>
+        <button onClick={handleComeBackClick}>Back to login</button>
+      </div>
     </div>
   );
 };

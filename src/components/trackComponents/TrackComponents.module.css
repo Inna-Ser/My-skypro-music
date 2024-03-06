@@ -1,4 +1,4 @@
-.track__title {
+.trackTitle {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -12,7 +12,7 @@
   width: 447px;
 }
   
-  .track__author {
+  .trackAuthor {
     width: 321px;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -22,7 +22,7 @@
     justify-content: flex-start;
   }
   
-  .track__author-link {
+  .trackAuthorLink {
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
@@ -31,11 +31,11 @@
     text-align: left;
   }
   
-  .track__album {
+  .trackAlbum {
     width: 245px;
   }
   
-  .track__album-link {
+  .trackAlbumLink {
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
@@ -43,7 +43,7 @@
     color: #696969;
   }
   
-  .track__time-svg {
+  .trackTimeSvg {
     width: 14px;
     height: 12px;
     margin-right: 17px;
@@ -51,7 +51,7 @@
     stroke: #696969;
   }
   
-  .track__time-text {
+  .trackTimeText {
     font-style: normal;
     font-weight: 400;
     font-size: 16px;

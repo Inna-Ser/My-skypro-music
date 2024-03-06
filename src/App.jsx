@@ -1,25 +1,24 @@
 import { useState } from "react";
-import "./App.css";
-import { Contaner, Wrapper } from "./App.styled";
-import { GlobalStyles } from "./Global.styled";
 import { AppRoutes } from "./Routes";
+import styles from "./App.module.css";
+import "./Global.module.css";
 
 const checkUserInLS = () => {
   // в ковычках ключ
-  const user = localStorage.getItem("user")
-  return user? user : null;
-}
+  const user = localStorage.getItem("user");
+  return user ? user : null;
+};
 export const App = () => {
   const [user, setUser] = useState(checkUserInLS());
 
   return (
     <>
-      <GlobalStyles />
-      <Wrapper>
-        <Contaner>
+      {/* <GlobalStyles /> */}
+      <div className={styles.wrapper}>
+        <div className={styles.contaner}>
           <AppRoutes user={user} setUser={setUser} />
-        </Contaner>
-      </Wrapper>
+        </div>
+      </div>
     </>
   );
 };

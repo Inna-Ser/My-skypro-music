@@ -1,10 +1,10 @@
-.playlist__item {
+.playlistItem {
     width: 100%;
     display: block;
     margin-bottom: 12px;
   }
   
-  .playlist__track {
+  .playlistTrack {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;

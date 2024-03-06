@@ -1,7 +1,7 @@
 .login {
 }
 
-.login__block {
+.loginBlock {
     position: fixed;
     display: flex;
   top: 50%;
@@ -16,6 +16,12 @@
   align-items: center;
 }
 
-.login__title {
+.loginTitle {
     color: blue;
+}
+
+.loginButton {
+  width: 100px;
+  height: 50px;
+  font-size: 22px;
 }

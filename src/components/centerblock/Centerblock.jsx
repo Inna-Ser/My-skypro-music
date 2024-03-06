@@ -26,7 +26,7 @@ const ContentTitle = () => {
 
 const Search = () => {
   return (
-    <div className={styles.centerblockSearchSearch}>
+    <div className={classNames(styles.centerblockSearch, styles.search)}>
       <svg className={styles.searchSvg}>
         <use xlinkHref="img/icon/sprite.svg#icon-search"></use>
       </svg>
@@ -42,7 +42,7 @@ const Search = () => {
 
 export const Centerblock = ({ isLoading }) => {
   return (
-    <div className={styles.mainCenterblockCenterblock}>
+    <div className={classNames(styles.mainCenterblock, styles.centerblock)}>
       <Search />
       <h2 className={styles.centerblockH2}>Треки</h2>
       <Filter />

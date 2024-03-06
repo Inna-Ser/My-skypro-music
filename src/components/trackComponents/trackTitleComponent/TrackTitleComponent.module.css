@@ -1,4 +1,4 @@
-  .track__title-image {
+  .trackTitleImage {
     width: 51px;
     height: 51px;
     padding: 16px;
@@ -15,14 +15,14 @@
     margin-right: 17px;
   }
   
-  .track__title-svg {
+  .trackTitleSvg {
     width: 18px;
     height: 17px;
     fill: transparent;
     stroke: #4e4e4e;
   }
   
-  .track__title-link {
+  .trackTitleLink {
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
@@ -30,7 +30,7 @@
     color: #ffffff;
   }
   
-  .track__title-span {
+  .trackTitleSpan {
     font-style: normal;
     font-weight: 400;
     font-size: 16px;

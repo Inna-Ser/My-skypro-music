@@ -1,9 +1,9 @@
-import "./trackTitleComponent.css";
+import styles from "./TrackTitleComponent.module.css";
 
 export const TrackTitleImg = () => {
   return (
-    <div className="track__title-image">
-      <svg className="track__title-svg" alt="music">
+    <div className={styles.trackTitleImage}>
+      <svg className={styles.trackTitleSvg} alt="music">
         <use xlinkHref="img/icon/sprite.svg#icon-note"></use>
       </svg>
     </div>
@@ -12,10 +12,10 @@ export const TrackTitleImg = () => {
 
 export const TrackTitleText = (props) => {
   return (
-    <div className="track__title-text">
-      <a className="track__title-link" href="http://">
+    <div className={styles.trackTitleText}>
+      <a className={styles.trackTitleLink} href="http://">
         {props.title}
-        <span className="track__title-span"></span>
+        <span className={styles.trackTitleSpan}></span>
       </a>
     </div>
   );

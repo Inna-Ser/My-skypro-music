@@ -9,7 +9,7 @@ import {
   TrackPlayImage,
   TrackPlayLike,
 } from "../audioplayerComponents/AudioplayerComponents";
-import { VolumeBlock } from "../volumeBlock/VolumeBlock";
+import { VolumeBlock } from "./volumeBlock/VolumeBlock";
 import stiles from "./Audioplayer.module.css";
 
 export const Audioplayer = () => {

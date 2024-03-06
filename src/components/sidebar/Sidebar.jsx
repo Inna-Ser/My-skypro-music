@@ -1,17 +1,13 @@
 import Skeleton from "react-loading-skeleton";
-import "./sidebar.css";
 import { Personal } from "./personal/Personal";
-import {
-  SidebarItem1,
-  SidebarItem2,
-  SidebarItem3,
-  SidebarList,
-} from "./sidebarList/SidebarList";
+import { SidebarList } from "./sidebarList/SidebarList";
 import { categories } from "../../utils/categories";
+import classNames from "classnames";
+import styles from "./Sidebar.module.css";
 
 export const Sidebar = (props) => {
   return (
-    <div className="main__sidebar sidebar">
+    <div className={classNames(styles.mainSidebar, styles.sidebar)}>
       {props.isLoading ? (
         <Skeleton
           width={"240px"}
@@ -22,8 +18,8 @@ export const Sidebar = (props) => {
       ) : (
         <Personal />
       )}
-      <div className="sidebar__block">
-        <div className="sidebar__list">
+      <div className={styles.sidebarBlock}>
+        <div className={styles.sidebarList}>
           {props.isLoading ? (
             <Skeleton width={"240px"} height={"130px"} baseColor="grey" />
           ) : (

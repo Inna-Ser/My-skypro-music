@@ -17,11 +17,11 @@ export const LoginComponent = ({ setUser }) => {
 
   return (
     <div className={styles.login}>
-      <div className={styles.login__block}>
-        <h1 className={styles.login__title}>Страница логина</h1>
-        <button onClick={handleClick}>Войти</button>
+      <div className={styles.loginBlock}>
+        <h1 className={styles.loginTitle}>Страница логина</h1>
+        <button className={styles.loginButton} onClick={handleClick}>Войти</button>
 
-        <Link className={styles.login__link} to="/registr">
+        <Link className={styles.loginLink} to="/registr">
           Перейти к регистрации
         </Link>
       </div>

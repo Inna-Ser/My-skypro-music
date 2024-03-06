@@ -1,9 +1,12 @@
-import { TrackTitleImg, TrackTitleText } from "./trackTitleComponent/TrackTitleComponent";
-import "./trackComponents.css";
+import {
+  TrackTitleImg,
+  TrackTitleText,
+} from "./trackTitleComponent/TrackTitleComponent";
+import styles from "./TrackComponents.module.css";
 
 export const TrackTitle = (props) => {
   return (
-    <div className="track__title">
+    <div className={styles.trackTitle}>
       <TrackTitleImg />
       <TrackTitleText title={props.title} />
     </div>
@@ -12,8 +15,8 @@ export const TrackTitle = (props) => {
 
 export const TrackAuthor = (props) => {
   return (
-    <div className="track__author">
-      <a className="track__author-link" href="http://">
+    <div className={styles.trackAuthor}>
+      <a className={styles.trackAuthorLink} href="http://">
         {props.author}
       </a>
     </div>
@@ -22,8 +25,8 @@ export const TrackAuthor = (props) => {
 
 export const TrackAlbum = (props) => {
   return (
-    <div className="track__album">
-      <a className="track__album-link" href="http://">
+    <div className={styles.trackAlbum}>
+      <a className={styles.trackAlbumLink} href="http://">
         {props.album}
       </a>
     </div>
@@ -32,11 +35,11 @@ export const TrackAlbum = (props) => {
 
 export const TrackTime = (props) => {
   return (
-    <div className="track__time">
-      <svg className="track__time-svg" alt="time">
+    <div className={styles.trackTime}>
+      <svg className={styles.trackTimeSvg} alt="time">
         <use xlinkHref="img/icon/sprite.svg#icon-like"></use>
       </svg>
-      <span className="track__time-text">{props.time}</span>
+      <span className={styles.trackTimeText}>{props.time}</span>
     </div>
   );
 };
