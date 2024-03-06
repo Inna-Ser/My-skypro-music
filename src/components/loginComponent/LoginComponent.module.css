@@ -1,0 +1,27 @@
+.login {
+}
+
+.loginBlock {
+    position: fixed;
+    display: flex;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 366px;
+  height: 439px;
+  border-radius: 12px;
+  background-color: white;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.loginTitle {
+    color: blue;
+}
+
+.loginButton {
+  width: 100px;
+  height: 50px;
+  font-size: 22px;
+}

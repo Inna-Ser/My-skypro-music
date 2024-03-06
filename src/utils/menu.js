@@ -1,14 +1,13 @@
-export const menu = [
-    {
+export const menu = [{
         link: "/",
-        title: "Главное"
+        title: "Главная"
     },
     {
-        link: "/",
+        link: "/playList",
         title: "Мой плейлист"
     },
     {
-        link: "../signin.html",
-        title: "Войти"
+        link: "/login",
+        title: "Выйти"
     },
 ];
