@@ -12,7 +12,7 @@ import {
 import { VolumeBlock } from "./volumeBlock/VolumeBlock";
 import stiles from "./Audioplayer.module.css";
 
-export const Audioplayer = () => {
+export const Audioplayer = ({currentTrack}) => {
   return (
     <div className={stiles.bar}>
       <div className={stiles.barContent}>
@@ -29,9 +29,9 @@ export const Audioplayer = () => {
             <TrackPlayImage />
             <div className={stiles.playerTrackPlay}>
               <div className={stiles.trackPlayContain}>
-                <TrackPlayAuthor />
+                <TrackPlayAuthor name={currentTrack.name}/>
               </div>
-              <TrackPlayAlbum />
+              <TrackPlayAlbum author={currentTrack.author}/>
               <TrackPlayLike />
             </div>
           </div>

@@ -7,16 +7,15 @@ import {
 } from "../trackComponents/TrackComponents";
 import "react-loading-skeleton/dist/skeleton.css";
 import { useParams } from "react-router-dom";
-import { tracks } from "../../utils/tracks";
 import classNames from "classnames";
 import styles from "./Track.module.css";
 
 export const Track = (props) => {
-  const params = useParams();
-  const track = tracks.find((track) => track.id === Number(params.id));
+  // const params = useParams();
+  // const track = tracks.find((track) => track.id === Number(params.id));
 
   return (
-    <div className={styles.playlistItem}>
+    <div onClick={props.setCurrentTrack} className={styles.playlistItem}>
       <div className={classNames(styles.playlistTrack, styles.track)}>
         {props.isLoading ? (
           <Skeleton width={"50px"} height={"50px"} baseColor="grey" />

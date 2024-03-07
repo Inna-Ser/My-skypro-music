@@ -40,7 +40,7 @@ const Search = () => {
   );
 };
 
-export const Centerblock = ({ isLoading }) => {
+export const Centerblock = ({ isLoading, getToken, setCurrentTrack }) => {
   return (
     <div className={classNames(styles.mainCenterblock, styles.centerblock)}>
       <Search />
@@ -48,7 +48,7 @@ export const Centerblock = ({ isLoading }) => {
       <Filter />
       <div className={styles.centerblockContent}>
         <ContentTitle />
-        <PlayList isLoading={isLoading} />
+        <PlayList isLoading={isLoading} getToken={getToken} setCurrentTrack={setCurrentTrack} />
       </div>
     </div>
   );

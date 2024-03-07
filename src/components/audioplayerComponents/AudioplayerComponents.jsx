@@ -61,21 +61,21 @@ export const TrackPlayImage = () => {
   );
 };
 
-export function TrackPlayAuthor() {
+export function TrackPlayAuthor({ name }) {
   return (
     <div className={styles.trackPlayAuthor}>
       <a className={styles.trackPlayAuthorLink} href="http://">
-        Ты та...
+        {name}
       </a>
     </div>
   );
 }
 
-export function TrackPlayAlbum() {
+export function TrackPlayAlbum({ author }) {
   return (
     <div className={styles.trackPlayAlbum}>
       <a className={styles.trackPlayAlbumLink} href="http://">
-        Баста
+        {author}
       </a>
     </div>
   );
