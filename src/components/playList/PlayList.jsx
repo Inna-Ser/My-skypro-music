@@ -5,25 +5,26 @@ import { useParams } from "react-router-dom";
 import styles from "./PlayList.module.css";
 import { getTracks } from "../../api";
 import { useEffect, useState } from "react";
+import { tracks } from "../../utils/tracks";
 
-export const PlayList = ({ setCurrentTrack }) => {
+export const PlayList = ({ setCurrentTrack, isLoading }) => {
   const params = useParams();
-  // const track = tracks.find((track) => track.id === Number(params.id));
   const [tracksList, setTracksList] = useState(Array(12));
-
-  const [isLoading, setIsLoading] = useState(false);
-
+  const [addTodoError, setAddTodoError] = useState(null);
   useEffect(() => {
-    setIsLoading(true);
-    getTracks().then((tracks) => {
-      setTracksList(tracks);
-      setIsLoading(false);
-    });
+    getTracks()
+      .then((tracks) => {
+        setTracksList(tracks);
+      })
+      .catch((error) => {
+        setAddTodoError(error.message);
+      });
   }, []);
 
   return (
     <div className={classNames(styles.content__playlist, styles.playlist)}>
-      {tracksList?.map((track) => (
+      <p style={{ color: "red" }}>{addTodoError}</p>
+      {tracksList.map((track) => (
         <Track
           setCurrentTrack={() => setCurrentTrack(track)}
           isLoading={isLoading}

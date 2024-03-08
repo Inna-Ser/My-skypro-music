@@ -13,7 +13,7 @@ export const TrackTitleImg = () => {
 export const TrackTitleText = (props) => {
   return (
     <div className={styles.trackTitleText}>
-      <a className={styles.trackTitleLink} href="http://">
+      <a className={styles.trackTitleLink}>
         {props.title}
         <span className={styles.trackTitleSpan}></span>
       </a>

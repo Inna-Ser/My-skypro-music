@@ -11,8 +11,26 @@ import {
 } from "../audioplayerComponents/AudioplayerComponents";
 import { VolumeBlock } from "./volumeBlock/VolumeBlock";
 import stiles from "./Audioplayer.module.css";
+import { useEffect, useRef, useState } from "react";
 
-export const Audioplayer = ({currentTrack}) => {
+export const Audioplayer = ({ currentTrack }) => {
+  const audioRef = useRef(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  useEffect(() => {
+    if (audioRef.current) {
+      if (isPlaying) {
+        audioRef.current.play();
+      } else {
+        audioRef.current.pause();
+      }
+    }
+  }, [isPlaying, currentTrack]);
+
+  const togglePlay = () => {
+    setIsPlaying(!isPlaying);
+  };
+
   return (
     <div className={stiles.bar}>
       <div className={stiles.barContent}>
@@ -21,7 +39,7 @@ export const Audioplayer = ({currentTrack}) => {
           <div className={stiles.barPlayer}>
             <div className={stiles.playerControls}>
               <Prev />
-              <Play />
+              <Play onClick={togglePlay} />
               <Next />
               <Repeat />
               <Shuffle />
@@ -29,15 +47,16 @@ export const Audioplayer = ({currentTrack}) => {
             <TrackPlayImage />
             <div className={stiles.playerTrackPlay}>
               <div className={stiles.trackPlayContain}>
-                <TrackPlayAuthor name={currentTrack.name}/>
+                <TrackPlayAuthor name={currentTrack.name} />
               </div>
-              <TrackPlayAlbum author={currentTrack.author}/>
+              <TrackPlayAlbum author={currentTrack.author} />
               <TrackPlayLike />
             </div>
           </div>
           <VolumeBlock />
         </div>
       </div>
+      <audio ref={audioRef} src={currentTrack.audioUrl} />
     </div>
   );
 };

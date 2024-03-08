@@ -16,9 +16,7 @@ export const TrackTitle = (props) => {
 export const TrackAuthor = (props) => {
   return (
     <div className={styles.trackAuthor}>
-      <a className={styles.trackAuthorLink} href="http://">
-        {props.author}
-      </a>
+      <div className={styles.trackAuthorLink}>{props.author}</div>
     </div>
   );
 };
@@ -26,9 +24,7 @@ export const TrackAuthor = (props) => {
 export const TrackAlbum = (props) => {
   return (
     <div className={styles.trackAlbum}>
-      <a className={styles.trackAlbumLink} href="http://">
-        {props.album}
-      </a>
+      <div className={styles.trackAlbumLink}>{props.album}</div>
     </div>
   );
 };

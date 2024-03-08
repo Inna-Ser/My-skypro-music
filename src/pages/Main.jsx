@@ -24,7 +24,7 @@ export const Main = ({ getToken }) => {
         />
         <Sidebar isLoading={isLoading} />
       </main>
-      {currentTrack && <Audioplayer currentTrack={currentTrack} />}
+      {!currentTrack ? null : <Audioplayer currentTrack={currentTrack} />}
       <footer className={styles.footer}></footer>
     </div>
   );

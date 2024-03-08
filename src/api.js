@@ -5,17 +5,10 @@ export function getTracks() {
         return fetch(getTracksHost, {
                 method: "GET",
         }).then((response) => {
+                if (!response.ok) {
+                        throw new Error("Oшибка сервера")
+                }
                 return response.json();
         });
 }
 
-// export function getTrack({ token, id }) {
-//   return fetch(`${baseHost}/track/${id}`, {
-//     method: "GET",
-//     headers: {
-//       Authorization: token,
-//     },
-//   }).then((response) => {
-//     return response.json();
-//   });
-// }

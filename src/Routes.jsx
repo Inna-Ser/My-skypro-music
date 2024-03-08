@@ -19,7 +19,7 @@ export const AppRoutes = ({ user, setUser, getToken }) => {
       <Route path="*" element={<NotFound />} />
       <Route element={<ProtectRoute isAlloved={Boolean(user)} />}>
         <Route path="/" element={<Main getToken={getToken} />} />
-        <Route path="/playList" element={<MyPlayListComponent getToken={getToken} />} />
+        <Route path="/playList" element={<MyPlayListComponent />} />
         <Route path="/category/:id" element={<Category />} />
       </Route>
     </Routes>
