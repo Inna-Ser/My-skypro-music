@@ -20,9 +20,9 @@ export const Audioplayer = ({ currentTrack }) => {
   useEffect(() => {
     if (audioRef.current) {
       if (isPlaying) {
-        audioRef.current.play();
-      } else {
         audioRef.current.pause();
+      } else {
+        audioRef.current.play();
       }
     }
   }, [isPlaying, currentTrack]);
@@ -56,7 +56,7 @@ export const Audioplayer = ({ currentTrack }) => {
           <VolumeBlock />
         </div>
       </div>
-      <audio ref={audioRef} src={currentTrack.audioUrl} />
+      <audio ref={audioRef} src={currentTrack.track_file} />
     </div>
   );
 };

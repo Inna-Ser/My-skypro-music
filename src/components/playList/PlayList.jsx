@@ -1,14 +1,10 @@
 import classNames from "classnames";
-// import { tracks } from "../../utils/tracks";
 import { Track } from "../track/Track";
-import { useParams } from "react-router-dom";
 import styles from "./PlayList.module.css";
 import { getTracks } from "../../api";
 import { useEffect, useState } from "react";
-import { tracks } from "../../utils/tracks";
 
 export const PlayList = ({ setCurrentTrack, isLoading }) => {
-  const params = useParams();
   const [tracksList, setTracksList] = useState(Array(12));
   const [addTodoError, setAddTodoError] = useState(null);
   useEffect(() => {
