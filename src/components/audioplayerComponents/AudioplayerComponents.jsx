@@ -1,5 +1,6 @@
 import classNames from "classnames";
 import styles from "./AudioplayerComponents.module.css";
+import { forwardRef } from "react";
 
 export const Prev = () => {
   return (
@@ -11,25 +12,25 @@ export const Prev = () => {
   );
 };
 
-export const Play = () => {
+export const Play = forwardRef((props, ref) => {
   return (
     <div className={classNames(styles.playerBtnPlay, styles._btn)}>
-      <svg className={styles.playerBtnPlaySvg} alt="play">
+      <svg className={styles.playerBtnPlaySvg} alt="play" ref={ref}>
         <use xlinkHref="img/icon/sprite.svg#icon-play"></use>
       </svg>
     </div>
   );
-};
+});
 
-export const Pause = () => {
+export const Pause = forwardRef((props, ref) => {
   return (
-    <div className={classNames(styles.playerBtnPause, styles._btn)}>
-      <svg className={styles.playerBtnPauseSvg}>
+    <div className={classNames(styles.playerBtnPause, styles._btn)} ref={ref}>
+      <svg className={styles.playerBtnPauseSvg} alt="pause">
         <use xlinkHref="img/icon/sprite.svg#icon-pause"></use>
       </svg>
     </div>
   );
-};
+});
 
 export const Next = () => {
   return (

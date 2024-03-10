@@ -30,21 +30,14 @@ export const Audioplayer = ({ currentTrack }) => {
     }
   }, [isPlaying]);
 
-  // useEffect(() => {
-  //   const audioElement = audioRef.current;
-  //   audioElement.src = currentTrack.treck_file;
-  //   if (isPlaying) {
-  //     audioRef.current.play();
-  //   }
-  //   audioElement.src = getTracks[currentTrackIndex].treck_file;
-  // }, [isPlaying, currentTrack]);
-
   const togglePlay = () => {
-    setIsPlaying(!isPlaying);
+    audioRef.current.play();
+    setIsPlaying(true);
   };
 
   const togglePause = () => {
-    setIsPlaying(!isPlaying);
+    audioRef.current.pause();
+    setIsPlaying(false);
   };
 
   const playNextTrack = () => {
@@ -65,9 +58,9 @@ export const Audioplayer = ({ currentTrack }) => {
         <div className={stiles.barPlayerBlock}>
           <div className={stiles.barPlayer}>
             <div className={stiles.playerControls}>
-              <Prev onClick={playPrevTrack} />
-              <Play onClick={togglePlay} />
-              <Pause onClick={togglePause} />
+              <Prev ref={audioRef} onClick={playPrevTrack} />
+              <Play ref={audioRef} onClick={togglePlay} />
+              <Pause ref={audioRef} onClick={togglePause} />
               <Next onClick={playNextTrack} />
               <Repeat />
               <Shuffle />
@@ -84,7 +77,9 @@ export const Audioplayer = ({ currentTrack }) => {
           <VolumeBlock />
         </div>
       </div>
-      <audio ref={audioRef} src={currentTrack.track_file} />
+      <audio controls ref={audioRef} src={currentTrack.track_file} />
     </div>
   );
 };
+
+// ReactDOM.render(<Audioplayer />);
