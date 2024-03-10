@@ -14,7 +14,7 @@ export const Navigator = () => {
     <nav className={classNames(styles.mainNav, styles.nav)}>
       <div className={classNames(styles.navLogo, styles.logo)}>
         <img className={styles.logoImage} src="/img/logo.png" alt="logo" />
-      </div>
+      </div>{" "}
       <div
         onClick={toggleVisibility}
         className={classNames(styles.navBurger, styles.burger)}

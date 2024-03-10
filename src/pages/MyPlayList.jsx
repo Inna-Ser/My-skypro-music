@@ -5,7 +5,6 @@ import { PlayList } from "../components/playList/PlayList";
 export const MyPlayList = ({ isLoading }) => {
   return (
     <div>
-      <Navigator />
       <MyPlayListComponent isLoading={isLoading} />
     </div>
   );

@@ -21,6 +21,16 @@ export const Play = () => {
   );
 };
 
+export const Pause = () => {
+  return (
+    <div className={classNames(styles.playerBtnPause, styles._btn)}>
+      <svg className={styles.playerBtnPauseSvg}>
+        <use xlinkHref="img/icon/sprite.svg#icon-pause"></use>
+      </svg>
+    </div>
+  );
+};
+
 export const Next = () => {
   return (
     <div className={styles.playerBtnNext}>

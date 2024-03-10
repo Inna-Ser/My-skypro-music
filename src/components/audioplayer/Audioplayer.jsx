@@ -1,5 +1,6 @@
 import {
   Next,
+  Pause,
   Play,
   Prev,
   Repeat,
@@ -12,23 +13,49 @@ import {
 import { VolumeBlock } from "./volumeBlock/VolumeBlock";
 import stiles from "./Audioplayer.module.css";
 import { useEffect, useRef, useState } from "react";
+import { getTracks } from "../../api";
 
 export const Audioplayer = ({ currentTrack }) => {
   const audioRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
 
   useEffect(() => {
     if (audioRef.current) {
-      if (isPlaying) {
-        audioRef.current.pause();
-      } else {
+      if (!isPlaying) {
         audioRef.current.play();
+      } else {
+        audioRef.current.pause();
       }
     }
-  }, [isPlaying, currentTrack]);
+  }, [isPlaying]);
+
+  // useEffect(() => {
+  //   const audioElement = audioRef.current;
+  //   audioElement.src = currentTrack.treck_file;
+  //   if (isPlaying) {
+  //     audioRef.current.play();
+  //   }
+  //   audioElement.src = getTracks[currentTrackIndex].treck_file;
+  // }, [isPlaying, currentTrack]);
 
   const togglePlay = () => {
     setIsPlaying(!isPlaying);
+  };
+
+  const togglePause = () => {
+    setIsPlaying(!isPlaying);
+  };
+
+  const playNextTrack = () => {
+    const nextTrackIndex = (currentTrackIndex + 1) % getTracks.length;
+    setCurrentTrackIndex(nextTrackIndex);
+  };
+
+  const playPrevTrack = () => {
+    const prevTrackIndex =
+      (currentTrackIndex - 1 + getTracks.length) % getTracks.length;
+    setCurrentTrackIndex(prevTrackIndex);
   };
 
   return (
@@ -38,9 +65,10 @@ export const Audioplayer = ({ currentTrack }) => {
         <div className={stiles.barPlayerBlock}>
           <div className={stiles.barPlayer}>
             <div className={stiles.playerControls}>
-              <Prev />
+              <Prev onClick={playPrevTrack} />
               <Play onClick={togglePlay} />
-              <Next />
+              <Pause onClick={togglePause} />
+              <Next onClick={playNextTrack} />
               <Repeat />
               <Shuffle />
             </div>

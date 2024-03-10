@@ -1,4 +1,12 @@
-.login {
+.loginLink {
+  width: 278px;
+  height: 52px;
+  border-radius: 6px;
+  border: 1px solid black;
+  font-size: 18px;
+  top: 340px;
+  text-align: center; /* Выравнивание текста по центру */
+  line-height: 50px;
 }
 
 .loginBlock {
@@ -14,14 +22,26 @@
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-}
-
-.loginTitle {
-    color: blue;
+  padding-block: 41px;
 }
 
 .loginButton {
-  width: 100px;
-  height: 50px;
-  font-size: 22px;
+  width: 278px;
+  height: 52px;
+  border-radius: 6px;
+  background-color: #580EA2;
+  font-size: 18px;
+  color: #FFFF;
+  margin-top: 30px;
+}
+
+.loginInput {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: none;
+  border-bottom: 1px solid black;
+  width: 278px;
+  color: #D0CECE;
+  margin-top: 30px;
 }
