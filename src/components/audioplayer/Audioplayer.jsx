@@ -41,14 +41,23 @@ export const Audioplayer = ({ currentTrack }) => {
   };
 
   const playNextTrack = () => {
-    const nextTrackIndex = (currentTrackIndex + 1) % getTracks.length;
-    setCurrentTrackIndex(nextTrackIndex);
-  };
+    const audioElement = audioRef.current;
 
+    if (audioElement) {
+      const nextTrackIndex = currentTrackIndex.current + 1;
+
+      audioElement.src = currentTrack[nextTrackIndex].track_file;
+      audioElement.play();
+
+      currentTrackIndex.current = nextTrackIndex;
+    }
+  };
+  
   const playPrevTrack = () => {
-    const prevTrackIndex =
-      (currentTrackIndex - 1 + getTracks.length) % getTracks.length;
+    const prevTrackIndex = currentTrackIndex - 1;
     setCurrentTrackIndex(prevTrackIndex);
+    audioRef.current.play();
+    setIsPlaying(true);
   };
 
   return (
@@ -58,10 +67,10 @@ export const Audioplayer = ({ currentTrack }) => {
         <div className={stiles.barPlayerBlock}>
           <div className={stiles.barPlayer}>
             <div className={stiles.playerControls}>
-              <Prev ref={audioRef} onClick={playPrevTrack} />
-              <Play ref={audioRef} onClick={togglePlay} />
-              <Pause ref={audioRef} onClick={togglePause} />
-              <Next onClick={playNextTrack} />
+              <Prev playPrevTrack={playPrevTrack} />
+              <Play togglePlay={togglePlay} />
+              <Pause togglePause={togglePause} />
+              <Next playNextTrack={playNextTrack} />
               <Repeat />
               <Shuffle />
             </div>

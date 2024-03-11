@@ -1,10 +1,12 @@
 import classNames from "classnames";
 import styles from "./AudioplayerComponents.module.css";
-import { forwardRef } from "react";
 
-export const Prev = () => {
+export const Prev = ({ playPrevTrack }) => {
+  const handleClick = () => {
+    playPrevTrack();
+  };
   return (
-    <div className={styles.playerBtnPrev}>
+    <div className={styles.playerBtnPrev} onClick={handleClick}>
       <svg className={styles.playerBtnPrevSvg} alt="prev">
         <use xlinkHref="img/icon/sprite.svg#icon-prev"></use>
       </svg>
@@ -12,29 +14,44 @@ export const Prev = () => {
   );
 };
 
-export const Play = forwardRef((props, ref) => {
+export const Play = ({ togglePlay }) => {
+  const handleClick = () => {
+    togglePlay();
+  };
   return (
-    <div className={classNames(styles.playerBtnPlay, styles._btn)}>
-      <svg className={styles.playerBtnPlaySvg} alt="play" ref={ref}>
+    <div
+      className={classNames(styles.playerBtnPlay, styles._btn)}
+      onClick={handleClick}
+    >
+      <svg className={styles.playerBtnPlaySvg} alt="play">
         <use xlinkHref="img/icon/sprite.svg#icon-play"></use>
       </svg>
     </div>
   );
-});
+};
 
-export const Pause = forwardRef((props, ref) => {
+export const Pause = ({ togglePause }) => {
+  const handleClick = () => {
+    togglePause();
+  };
   return (
-    <div className={classNames(styles.playerBtnPause, styles._btn)} ref={ref}>
+    <div
+      className={classNames(styles.playerBtnPause, styles._btn)}
+      onClick={handleClick}
+    >
       <svg className={styles.playerBtnPauseSvg} alt="pause">
         <use xlinkHref="img/icon/sprite.svg#icon-pause"></use>
       </svg>
     </div>
   );
-});
+};
 
-export const Next = () => {
+export const Next = ({ playNextTrack }) => {
+  const handleClick = () => {
+    playNextTrack();
+  };
   return (
-    <div className={styles.playerBtnNext}>
+    <div className={styles.playerBtnNext} onClick={handleClick}>
       <svg className={styles.playerBtnNextSvg} alt="next">
         <use xlinkHref="img/icon/sprite.svg#icon-next"></use>
       </svg>
