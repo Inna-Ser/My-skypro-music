@@ -13,12 +13,13 @@ import {
 import { VolumeBlock } from "./volumeBlock/VolumeBlock";
 import stiles from "./Audioplayer.module.css";
 import { useEffect, useRef, useState } from "react";
-import { getTracks } from "../../api";
 
 export const Audioplayer = ({ currentTrack }) => {
   const audioRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
+  const [isLoop, setIsLoop] = useState(false);
+
 
   useEffect(() => {
     if (audioRef.current) {
@@ -52,13 +53,20 @@ export const Audioplayer = ({ currentTrack }) => {
       currentTrackIndex.current = nextTrackIndex;
     }
   };
-  
+
   const playPrevTrack = () => {
     const prevTrackIndex = currentTrackIndex - 1;
     setCurrentTrackIndex(prevTrackIndex);
     audioRef.current.play();
     setIsPlaying(true);
   };
+
+  const playRepeatTrack = () => {
+    audioRef.current.loop = !isLoop;
+    setIsLoop((prev) => !prev);
+  };
+
+  const playShuffleTrack = () => {};
 
   return (
     <div className={stiles.bar}>
@@ -71,7 +79,7 @@ export const Audioplayer = ({ currentTrack }) => {
               <Play togglePlay={togglePlay} />
               <Pause togglePause={togglePause} />
               <Next playNextTrack={playNextTrack} />
-              <Repeat />
+              <Repeat playRepeatTrack={playRepeatTrack} isActive={isLoop} />
               <Shuffle />
             </div>
             <TrackPlayImage />
@@ -83,7 +91,7 @@ export const Audioplayer = ({ currentTrack }) => {
               <TrackPlayLike />
             </div>
           </div>
-          <VolumeBlock />
+          <VolumeBlock audioRef={audioRef} />
         </div>
       </div>
       <audio controls ref={audioRef} src={currentTrack.track_file} />

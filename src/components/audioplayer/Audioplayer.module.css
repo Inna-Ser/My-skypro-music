@@ -72,6 +72,9 @@
     -ms-flex-direction: row;
     flex-direction: row;
     align-items: center;
+    &:hover {
+      border-color: rgb(124, 153, 240);
+    }
   }
 
   .trackPlayContain {

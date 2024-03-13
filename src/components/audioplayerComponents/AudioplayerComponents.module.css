@@ -178,3 +178,7 @@
     fill: transparent;
     stroke: #696969;
   }
+
+  .active {
+    stroke: #ffffff;
+  }

@@ -13,6 +13,10 @@ export const PlayList = ({ setCurrentTrack, isLoading }) => {
         setTracksList(tracks);
       })
       .catch((error) => {
+        if (error.message === "Failed to fetch") {
+          setAddTodoError("Не удалось загрузить треки");
+          return;
+        }
         setAddTodoError(error.message);
       });
   }, []);

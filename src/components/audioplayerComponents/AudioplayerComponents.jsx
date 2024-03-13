@@ -59,9 +59,16 @@ export const Next = ({ playNextTrack }) => {
   );
 };
 
-export const Repeat = () => {
+export const Repeat = ({ playRepeatTrack, isActive }) => {
   return (
-    <div className={classNames(styles.playerBtnRepeat, styles._btnIcon)}>
+    <div
+      className={
+        isActive
+          ? classNames(styles.playerBtnRepeat, styles.active)
+          : classNames(styles.playerBtnRepeat, styles._btnIcon)
+      }
+      onClick={playRepeatTrack}
+    >
       <svg className={styles.playerBtnRepeatSvg} alt="repeat">
         <use xlinkHref="img/icon/sprite.svg#icon-repeat"></use>
       </svg>
@@ -69,7 +76,7 @@ export const Repeat = () => {
   );
 };
 
-export const Shuffle = () => {
+export const Shuffle = (props) => {
   return (
     <div className={classNames(styles.playerBtnShuffle, styles._btnIcon)}>
       <svg className={styles.playerBtnShuffleSvg} alt="shuffle">
