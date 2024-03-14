@@ -62,24 +62,34 @@ export const Next = ({ playNextTrack }) => {
 export const Repeat = ({ playRepeatTrack, isActive }) => {
   return (
     <div
-      className={
-        isActive
-          ? classNames(styles.playerBtnRepeat, styles.active)
-          : classNames(styles.playerBtnRepeat, styles._btnIcon)
-      }
+      className={classNames(styles.playerBtnRepeat, styles._btnIcon)}
       onClick={playRepeatTrack}
     >
-      <svg className={styles.playerBtnRepeatSvg} alt="repeat">
+      <svg
+        className={
+          !isActive
+            ? styles.playerBtnRepeatSvg
+            : classNames(styles.playerBtnRepeatSvg, styles.active)
+        }
+        alt="repeat"
+      >
         <use xlinkHref="img/icon/sprite.svg#icon-repeat"></use>
       </svg>
     </div>
   );
 };
 
-export const Shuffle = (props) => {
+export const Shuffle = (isActive) => {
   return (
     <div className={classNames(styles.playerBtnShuffle, styles._btnIcon)}>
-      <svg className={styles.playerBtnShuffleSvg} alt="shuffle">
+      <svg
+        className={
+          isActive
+            ? styles.playerBtnShuffleSvg
+            : classNames(styles.playerBtnShuffleSvg, styles.active)
+        }
+        alt="shuffle"
+      >
         <use xlinkHref="img/icon/sprite.svg#icon-shuffle"></use>
       </svg>
     </div>

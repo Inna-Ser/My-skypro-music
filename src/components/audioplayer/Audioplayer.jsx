@@ -13,6 +13,7 @@ import {
 import { VolumeBlock } from "./volumeBlock/VolumeBlock";
 import stiles from "./Audioplayer.module.css";
 import { useEffect, useRef, useState } from "react";
+import { ProgressBar } from "./progressbar/Progressbar.jsx";
 
 export const Audioplayer = ({ currentTrack }) => {
   const audioRef = useRef(null);
@@ -20,16 +21,15 @@ export const Audioplayer = ({ currentTrack }) => {
   const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
   const [isLoop, setIsLoop] = useState(false);
 
-
-  useEffect(() => {
-    if (audioRef.current) {
-      if (!isPlaying) {
-        audioRef.current.play();
-      } else {
-        audioRef.current.pause();
-      }
-    }
-  }, [isPlaying]);
+  // useEffect(() => {
+  //   if (audioRef.current) {
+  //     if (!isPlaying) {
+  //       audioRef.current.play();
+  //     } else {
+  //       audioRef.current.pause();
+  //     }
+  //   }
+  // }, [isPlaying]);
 
   const togglePlay = () => {
     audioRef.current.play();
@@ -41,18 +41,7 @@ export const Audioplayer = ({ currentTrack }) => {
     setIsPlaying(false);
   };
 
-  const playNextTrack = () => {
-    const audioElement = audioRef.current;
-
-    if (audioElement) {
-      const nextTrackIndex = currentTrackIndex.current + 1;
-
-      audioElement.src = currentTrack[nextTrackIndex].track_file;
-      audioElement.play();
-
-      currentTrackIndex.current = nextTrackIndex;
-    }
-  };
+  const playNextTrack = () => {};
 
   const playPrevTrack = () => {
     const prevTrackIndex = currentTrackIndex - 1;
@@ -69,34 +58,39 @@ export const Audioplayer = ({ currentTrack }) => {
   const playShuffleTrack = () => {};
 
   return (
-    <div className={stiles.bar}>
-      <div className={stiles.barContent}>
-        <div className={stiles.barPlayerProgress}></div>
-        <div className={stiles.barPlayerBlock}>
-          <div className={stiles.barPlayer}>
-            <div className={stiles.playerControls}>
-              <Prev playPrevTrack={playPrevTrack} />
-              <Play togglePlay={togglePlay} />
-              <Pause togglePause={togglePause} />
-              <Next playNextTrack={playNextTrack} />
-              <Repeat playRepeatTrack={playRepeatTrack} isActive={isLoop} />
-              <Shuffle />
-            </div>
-            <TrackPlayImage />
-            <div className={stiles.playerTrackPlay}>
-              <div className={stiles.trackPlayContain}>
-                <TrackPlayAuthor name={currentTrack.name} />
+    <>
+      <audio controls ref={audioRef} src={currentTrack.track_file} />
+      <ProgressBar></ProgressBar>
+
+      <div className={stiles.bar}>
+        <div className={stiles.barContent}>
+          <div className={stiles.barPlayerProgress}></div>
+          <div className={stiles.barPlayerBlock}>
+            <div className={stiles.barPlayer}>
+              <div className={stiles.playerControls}>
+                <Prev playPrevTrack={playPrevTrack} />
+                {!isPlaying ? (
+                  <Play togglePlay={togglePlay} />
+                ) : (
+                  <Pause togglePause={togglePause} />
+                )}
+                <Next playNextTrack={playNextTrack} />
+                <Repeat playRepeatTrack={playRepeatTrack} isActive={isLoop} />
+                <Shuffle />
               </div>
-              <TrackPlayAlbum author={currentTrack.author} />
-              <TrackPlayLike />
+              <TrackPlayImage />
+              <div className={stiles.playerTrackPlay}>
+                <div className={stiles.trackPlayContain}>
+                  <TrackPlayAuthor name={currentTrack.name} />
+                </div>
+                <TrackPlayAlbum author={currentTrack.author} />
+                <TrackPlayLike />
+              </div>
             </div>
+            <VolumeBlock audioRef={audioRef} />
           </div>
-          <VolumeBlock audioRef={audioRef} />
         </div>
       </div>
-      <audio controls ref={audioRef} src={currentTrack.track_file} />
-    </div>
+    </>
   );
 };
-
-// ReactDOM.render(<Audioplayer />);
