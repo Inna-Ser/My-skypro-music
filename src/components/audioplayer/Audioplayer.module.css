@@ -3,7 +3,7 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    background: #2e2e2e;
+    background: transparent;
   }
   
   .barContent {
@@ -14,6 +14,7 @@
     -webkit-box-direction: normal;
     -ms-flex-direction: column;
     flex-direction: column;
+    background: #2e2e2e;
     /* height: 0px; */
   }
   
@@ -91,7 +92,8 @@
   }
 
   .audioControler {
-    -webkit-appearance: none;
+    visibility: hidden;
+    /* -webkit-appearance: none;
     appearance: none;
     width: 100%;
     height: 25px;
@@ -99,7 +101,7 @@
     outline: none;
     opacity: 0.5;
     -webkit-transition: .2s;
-    transition: opacity .2s;
+    transition: opacity .2s; */
   }
   
   

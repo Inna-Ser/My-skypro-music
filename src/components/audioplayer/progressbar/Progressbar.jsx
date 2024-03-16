@@ -1,9 +1,13 @@
 import { useState } from "react";
 import stiles from "./Progressbar.module.css";
 
-export function ProgressBar() {
-  const [currentTime, setCurrentTime] = useState(70);
-  const duration = 230;
+export function ProgressBar({ audioRef, duration }) {
+  const [currentTime, setCurrentTime] = useState(0);
+
+  const changeTiming = (e) => {
+    audioRef.current.currentTime = e.target.value;
+    // setCurrentTime(currentTime);
+  };
 
   return (
     <input
@@ -13,7 +17,7 @@ export function ProgressBar() {
       max={duration}
       value={currentTime}
       step={0.01}
-      onChange={(event) => setCurrentTime(event.target.value)}
+      onChange={changeTiming}
       $color="#ff0000"
     />
   );

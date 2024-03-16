@@ -20,6 +20,7 @@ export const Audioplayer = ({ currentTrack }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
   const [isLoop, setIsLoop] = useState(false);
+  const [duration, setDuration] = useState(0);
 
   // useEffect(() => {
   //   if (audioRef.current) {
@@ -30,6 +31,12 @@ export const Audioplayer = ({ currentTrack }) => {
   //     }
   //   }
   // }, [isPlaying]);
+
+  useEffect(() => {
+    audioRef.current.duration
+      ? setDuration(audioRef.current.duration)
+      : setDuration(0);
+  });
 
   const togglePlay = () => {
     audioRef.current.play();
@@ -59,20 +66,24 @@ export const Audioplayer = ({ currentTrack }) => {
 
   return (
     <>
-      <audio controls ref={audioRef} src={currentTrack.track_file} />
-      <ProgressBar></ProgressBar>
-
+      <audio
+        className={stiles.audioControler}
+        controls
+        ref={audioRef}
+        src={currentTrack.track_file}
+      />
       <div className={stiles.bar}>
+        <ProgressBar audioRef={audioRef} duration={duration}></ProgressBar>
         <div className={stiles.barContent}>
           <div className={stiles.barPlayerProgress}></div>
           <div className={stiles.barPlayerBlock}>
             <div className={stiles.barPlayer}>
               <div className={stiles.playerControls}>
                 <Prev playPrevTrack={playPrevTrack} />
-                {!isPlaying ? (
-                  <Play togglePlay={togglePlay} />
-                ) : (
+                {isPlaying ? (
                   <Pause togglePause={togglePause} />
+                ) : (
+                  <Play togglePlay={togglePlay} />
                 )}
                 <Next playNextTrack={playNextTrack} />
                 <Repeat playRepeatTrack={playRepeatTrack} isActive={isLoop} />
