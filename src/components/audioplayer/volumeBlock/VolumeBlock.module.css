@@ -32,6 +32,29 @@
   
   .volumeProgressLine {
     width: 109px;
+    --progress-height: 8px;
+  --progress-color: #ffffff;
+
+  margin: 0;
+  height: var(--progress-height);
+  -webkit-appearance: none;
+  cursor: pointer;
+  background: #2e2e2e;
+  overflow: hidden;
+
+  &::-webkit-slider-thumb {
+    --thumb-height: 1px;
+    --thumb-width: 1px;
+    position: relative;
+    -webkit-appearance: none;
+    width: var(--thumb-width, var(--thumb-height));
+    box-shadow: calc(-100vmax - var(--thumb-width, var(--thumb-height))) 0 0
+      100vmax var(--progress-color);
+  }
+
+  &::-webkit-slider-runnable-track {
+    background: var(--progress-bg-color);
+  }
   }
 
   .barVolumeBlock {

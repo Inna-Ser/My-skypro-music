@@ -67,3 +67,7 @@
   }
 }
 
+.active {
+  border-color: #b672ff;
+  color: #b672ff;
+}

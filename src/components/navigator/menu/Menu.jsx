@@ -1,5 +1,5 @@
 import { NavLink, useLocation } from "react-router-dom";
-import { menu } from "../../utils/menu";
+import { menu } from "../../../utils/menu";
 import styles from "./Menu.module.css";
 import { useState } from "react";
 

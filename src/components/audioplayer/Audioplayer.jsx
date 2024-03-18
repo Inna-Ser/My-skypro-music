@@ -11,32 +11,23 @@ import {
   TrackPlayLike,
 } from "../audioplayerComponents/AudioplayerComponents";
 import { VolumeBlock } from "./volumeBlock/VolumeBlock";
-import stiles from "./Audioplayer.module.css";
+import { TrackTime } from "./trackTime/TrackTime.jsx";
+import styles from "./Audioplayer.module.css";
 import { useEffect, useRef, useState } from "react";
 import { ProgressBar } from "./progressbar/Progressbar.jsx";
 
 export const Audioplayer = ({ currentTrack }) => {
   const audioRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
+  // const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
   const [isLoop, setIsLoop] = useState(false);
-  const [duration, setDuration] = useState(0);
-
-  // useEffect(() => {
-  //   if (audioRef.current) {
-  //     if (!isPlaying) {
-  //       audioRef.current.play();
-  //     } else {
-  //       audioRef.current.pause();
-  //     }
-  //   }
-  // }, [isPlaying]);
 
   useEffect(() => {
-    audioRef.current.duration
-      ? setDuration(audioRef.current.duration)
-      : setDuration(0);
-  });
+    setIsPlaying(false);
+    if (audioRef.current) {
+      togglePlay();
+    }
+  }, [currentTrack]);
 
   const togglePlay = () => {
     audioRef.current.play();
@@ -48,13 +39,19 @@ export const Audioplayer = ({ currentTrack }) => {
     setIsPlaying(false);
   };
 
-  const playNextTrack = () => {};
+  useEffect(() => {
+    const handleEnded = () => {
+      setIsPlaying(false);
+    };
+    audioRef.current.addEventListener("ended", handleEnded);
+  }, [audioRef]);
+
+  const playNextTrack = () => {
+    alert("логика еще не написана");
+  };
 
   const playPrevTrack = () => {
-    const prevTrackIndex = currentTrackIndex - 1;
-    setCurrentTrackIndex(prevTrackIndex);
-    audioRef.current.play();
-    setIsPlaying(true);
+    alert("логика еще не написана");
   };
 
   const playRepeatTrack = () => {
@@ -62,24 +59,26 @@ export const Audioplayer = ({ currentTrack }) => {
     setIsLoop((prev) => !prev);
   };
 
-  const playShuffleTrack = () => {};
+  const playShuffleTrack = () => {
+    alert("логика еще не написана");
+  };
 
   return (
     <>
       <audio
-        className={stiles.audioControler}
+        className={styles.audioControler}
         controls
         ref={audioRef}
         src={currentTrack.track_file}
       />
-      <div className={stiles.bar}>
-        <ProgressBar audioRef={audioRef} duration={duration}></ProgressBar>
-        <div className={stiles.barContent}>
-          <div className={stiles.barPlayerProgress}></div>
-          <div className={stiles.barPlayerBlock}>
-            <div className={stiles.barPlayer}>
-              <div className={stiles.playerControls}>
-                <Prev playPrevTrack={playPrevTrack} />
+      <div className={styles.bar}>
+        <TrackTime audioRef={audioRef}></TrackTime>
+        <div className={styles.barContent}>
+          <ProgressBar audioRef={audioRef}></ProgressBar>
+          <div className={styles.barPlayerBlock}>
+            <div className={styles.barPlayer}>
+              <div className={styles.playerControls}>
+                <Prev playPrevTrack={playPrevTrack} onClick={playPrevTrack} />
                 {isPlaying ? (
                   <Pause togglePause={togglePause} />
                 ) : (
@@ -87,11 +86,11 @@ export const Audioplayer = ({ currentTrack }) => {
                 )}
                 <Next playNextTrack={playNextTrack} />
                 <Repeat playRepeatTrack={playRepeatTrack} isActive={isLoop} />
-                <Shuffle />
+                <Shuffle playShuffleTrack={playShuffleTrack} />
               </div>
               <TrackPlayImage />
-              <div className={stiles.playerTrackPlay}>
-                <div className={stiles.trackPlayContain}>
+              <div className={styles.playerTrackPlay}>
+                <div className={styles.trackPlayContain}>
                   <TrackPlayAuthor name={currentTrack.name} />
                 </div>
                 <TrackPlayAlbum author={currentTrack.author} />

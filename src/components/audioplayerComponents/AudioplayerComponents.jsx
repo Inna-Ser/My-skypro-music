@@ -79,12 +79,15 @@ export const Repeat = ({ playRepeatTrack, isActive }) => {
   );
 };
 
-export const Shuffle = (isActive) => {
+export const Shuffle = ({ isActive, playShuffleTrack }) => {
   return (
-    <div className={classNames(styles.playerBtnShuffle, styles._btnIcon)}>
+    <div
+      className={classNames(styles.playerBtnShuffle, styles._btnIcon)}
+      onClick={playShuffleTrack}
+    >
       <svg
         className={
-          isActive
+          !isActive
             ? styles.playerBtnShuffleSvg
             : classNames(styles.playerBtnShuffleSvg, styles.active)
         }
@@ -129,12 +132,18 @@ export function TrackPlayAlbum({ author }) {
 export function TrackPlayLike() {
   return (
     <div className={styles.trackPlayLikeDis}>
-      <div className={classNames(styles.trackPlayLike, styles._btnIcon)}>
+      <div
+        className={classNames(styles.trackPlayLike, styles._btnIcon)}
+        onClick={() => alert("логика еще не написана")}
+      >
         <svg className={styles.trackPlayLikeSvg} alt="like">
           <use xlinkHref="img/icon/sprite.svg#icon-like"></use>
         </svg>
       </div>
-      <div className={classNames(styles.trackPlayDislike, styles._btnIcon)}>
+      <div
+        className={classNames(styles.trackPlayDislike, styles._btnIcon)}
+        onClick={() => alert("логика еще не написана")}
+      >
         <svg className={styles.trackPlayDislikeSvg} alt="dislike">
           <use xlinkHref="img/icon/sprite.svg#icon-dislike"></use>
         </svg>

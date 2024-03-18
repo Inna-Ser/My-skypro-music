@@ -2,6 +2,7 @@ import { useState } from "react";
 import { filterYears } from "../../utils/filterYears";
 import { tracks } from "../../utils/tracks";
 import styles from "./Filter.module.css";
+import classNames from "classnames";
 
 const FilterAuthor = () => {
   return (
@@ -55,7 +56,12 @@ export const Filter = () => {
       <div className={styles.filterTitle}>Искать по:</div>
       <div className={styles.filterWrapper}>
         <div
-          className={styles.filterButton}
+          className={
+            visible === "author"
+              ? classNames(styles.filterButton, styles.active)
+              : styles.filterButton
+          }
+          exact
           onClick={() => toggleVisibility("author")}
         >
           исполнителю
@@ -64,7 +70,11 @@ export const Filter = () => {
       </div>
       <div className={styles.filterWrapper}>
         <div
-          className={styles.filterButton}
+          className={
+            visible === "years"
+              ? classNames(styles.filterButton, styles.active)
+              : styles.filterButton
+          }
           onClick={() => toggleVisibility("years")}
         >
           году выпуска
@@ -73,7 +83,11 @@ export const Filter = () => {
       </div>
       <div className={styles.filterWrapper}>
         <div
-          className={styles.filterButton}
+          className={
+            visible === "genre"
+              ? classNames(styles.filterButton, styles.active)
+              : styles.filterButton
+          }
           onClick={() => toggleVisibility("genre")}
         >
           жанру

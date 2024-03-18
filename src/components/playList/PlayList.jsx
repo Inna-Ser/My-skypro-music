@@ -26,6 +26,7 @@ export const PlayList = ({ setCurrentTrack, isLoading }) => {
       <p style={{ color: "red" }}>{addTodoError}</p>
       {tracksList.map((track) => (
         <Track
+        
           setCurrentTrack={() => setCurrentTrack(track)}
           isLoading={isLoading}
           key={track.id}

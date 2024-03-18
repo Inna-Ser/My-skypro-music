@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { menu } from "../../utils/menu";
 import { BurgerLine } from "../burgerLine/BurgerLine";
-import { Menu } from "../menu/Menu";
+import { Menu } from "./menu/Menu";
 import classNames from "classnames";
 import styles from "./Navigator.module.css";
 
