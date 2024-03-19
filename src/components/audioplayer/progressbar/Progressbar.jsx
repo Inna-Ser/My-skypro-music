@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import styles from "./Progressbar.module.css";
 
-export function ProgressBar({ audioRef }) {
+export function ProgressBar({ audioRef, togglePlay }) {
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const progressbarRef = useRef(null);
@@ -10,6 +10,7 @@ export function ProgressBar({ audioRef }) {
     const { value } = e.target;
     audioRef.current.currentTime = value;
     setCurrentTime(value);
+    togglePlay();
   };
 
   useEffect(() => {

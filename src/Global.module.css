@@ -64,7 +64,7 @@ body {
 
 ._btnIcon:active .track-play__like-svg,
 ._btnIcon:active .track-play__dislike-svg {
-  fill: #696969;
+  fill: #7d7b7b;
   stroke: #ffffff;
   cursor: pointer;
 }

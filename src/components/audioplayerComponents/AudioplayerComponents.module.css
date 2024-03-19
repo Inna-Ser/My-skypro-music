@@ -64,7 +64,7 @@
     width: 18px;
     height: 12px;
     fill: transparent;
-    stroke: #696969;
+    stroke: #7d7b7b;
   }
   
   .playerBtnShuffle {
@@ -80,7 +80,7 @@
     width: 19px;
     height: 12px;
     fill: transparent;
-    stroke: #696969;
+    stroke: #7d7b7b;
   }
   
   .trackPlayImage {
@@ -165,7 +165,7 @@
     width: 14px;
     height: 12px;
     fill: transparent;
-    stroke: #696969;
+    stroke: #7d7b7b;
   }
   
   .trackPlayDislike {
@@ -176,7 +176,7 @@
     width: 14.34px;
     height: 13px;
     fill: transparent;
-    stroke: #696969;
+    stroke: #7d7b7b;
   }
 
   .active {

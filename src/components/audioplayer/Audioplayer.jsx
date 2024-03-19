@@ -74,7 +74,10 @@ export const Audioplayer = ({ currentTrack }) => {
       <div className={styles.bar}>
         <TrackTime audioRef={audioRef}></TrackTime>
         <div className={styles.barContent}>
-          <ProgressBar audioRef={audioRef}></ProgressBar>
+          <ProgressBar
+            audioRef={audioRef}
+            togglePlay={togglePlay}
+          ></ProgressBar>
           <div className={styles.barPlayerBlock}>
             <div className={styles.barPlayer}>
               <div className={styles.playerControls}>
