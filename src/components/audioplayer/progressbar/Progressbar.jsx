@@ -16,23 +16,27 @@ export function ProgressBar({ audioRef }) {
     const updateTime = () => {
       setCurrentTime(audioRef.current.currentTime);
     };
+
+    const loadedMetadata = () => {
+      setDuration(audioRef.current.duration);
+    };
+
     if (audioRef.current) {
       setDuration(audioRef.current.duration);
       audioRef.current.addEventListener("timeupdate", updateTime);
-    }
-
-    return () => {
-      if (audioRef.current) {
+      audioRef.current.addEventListener("loadedmetadata", loadedMetadata);
+      return () => {
         audioRef.current.removeEventListener("timeupdate", updateTime);
-      }
-    };
+        audioRef.current.addEventListener("loadedmetadata", loadedMetadata);
+      };
+    }
   }, [audioRef]);
 
   useEffect(() => {
-    if (progressbarRef.current) {
-      const progressBar = progressbarRef.current;
-      const percentPlayed = (currentTime / duration) * 100;
-      progressBar.style.backgroundSize = `${percentPlayed}% 100%`;
+    if (progressbarRef.current && duration > 0) {
+      progressbarRef.current.style.backgroundSize = `${
+        (currentTime / duration) * 100
+      }% 100%`;
     }
   }, [currentTime, duration]);
 
