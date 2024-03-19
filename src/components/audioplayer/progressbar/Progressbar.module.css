@@ -1,13 +1,15 @@
 .progressbarInput {
   --progress-height: 8px;
   --progress-color: #b672ff;
+  --progress-bg-color: #2e2e2e;
+  --progress-width: 0%;
 
   margin: 0;
   width: 100%;
   height: var(--progress-height);
   -webkit-appearance: none;
   cursor: pointer;
-  background: #2e2e2e;
+  background: var(--progress-bg-color);
   overflow: hidden;
 
   &::-webkit-slider-thumb {
@@ -22,7 +24,9 @@
 
   &::-webkit-slider-runnable-track {
     background: var(--progress-bg-color);
+    height: var(--progress-height);
+    width: var(--progress-width, 0%);
   }
-  }
+}
 
   
