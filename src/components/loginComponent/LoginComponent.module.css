@@ -9,6 +9,10 @@
   line-height: 50px;
 }
 
+.loginBoxInput {
+  display: contents;
+}
+
 .loginBlock {
     position: fixed;
     display: flex;

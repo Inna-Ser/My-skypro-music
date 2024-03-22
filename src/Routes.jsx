@@ -10,14 +10,8 @@ import { Register } from "./pages/Register";
 export const AppRoutes = ({ user, setUser, getToken }) => {
   return (
     <Routes>
-      <Route
-        path="/login"
-        element={<Login setUser={setUser} getToken={getToken} />}
-      />
-      <Route
-        path="/registr"
-        element={<Register setUser={setUser} getToken={getToken} />}
-      />
+      <Route path="/login" element={<Login isLoginMode={true} />} />
+      <Route path="/registr" element={<Register isLoginMode={false} />} />
       <Route path="*" element={<NotFound />} />
       <Route element={<ProtectRoute isAlloved={Boolean(user)} />}>
         <Route path="/" element={<Main getToken={getToken} />} />
