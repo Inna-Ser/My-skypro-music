@@ -18,7 +18,7 @@ export const RegisterComponent = ({ setUser }) => {
       setEmail(value);
     } else if (name === "password") {
       setPassword(value);
-    } else if (name === "repeatPassword") {
+    } else if (name === "repeat-password") {
       setRepeatPassword(value);
     }
   };
