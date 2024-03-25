@@ -1,5 +1,7 @@
+import { useContext } from "react";
 import { LoginComponent } from "../components/loginComponent/LoginComponent";
+import { UserContext } from "../userContext";
 
-export const Login = ({ setUser }) => {
-  return <LoginComponent setUser={setUser}  />;
+export const Login = () => {
+  return <LoginComponent />;
 };

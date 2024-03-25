@@ -2,6 +2,7 @@ import { useState } from "react";
 import { AppRoutes } from "./Routes";
 import styles from "./App.module.css";
 import "./Global.module.css";
+import { UserContext } from "./userContext";
 
 const checkUserInLS = () => {
   // в ковычках ключ
@@ -19,10 +20,11 @@ export const App = () => {
 
   return (
     <>
-      {/* <GlobalStyles /> */}
       <div className={styles.wrapper}>
         <div className={styles.contaner}>
-          <AppRoutes user={user} setUser={setUser} getToken={getToken} />
+          <UserContext.Provider value={{user, setUser, getToken}}>
+          <AppRoutes />
+          </UserContext.Provider>
         </div>
       </div>
     </>

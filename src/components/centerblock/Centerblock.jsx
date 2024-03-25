@@ -2,6 +2,7 @@ import { Filter } from "../filterItem/Filter";
 import styles from "./Centerblock.module.css";
 import { PlayList } from "../playList/PlayList";
 import classNames from "classnames";
+import { UserContext } from "../../userContext";
 
 const ContentTitle = () => {
   return (
@@ -40,7 +41,7 @@ const Search = () => {
   );
 };
 
-export const Centerblock = ({ isLoading, getToken, setCurrentTrack }) => {
+export const Centerblock = ({ isLoading, setCurrentTrack }) => {
   return (
     <div className={classNames(styles.mainCenterblock, styles.centerblock)}>
       <Search />
@@ -48,7 +49,15 @@ export const Centerblock = ({ isLoading, getToken, setCurrentTrack }) => {
       <Filter />
       <div className={styles.centerblockContent}>
         <ContentTitle />
-        <PlayList isLoading={isLoading} getToken={getToken} setCurrentTrack={setCurrentTrack} />
+        <UserContext.Consumer>
+          {(getToken) => (
+            <PlayList
+              isLoading={isLoading}
+              getToken={getToken}
+              setCurrentTrack={setCurrentTrack}
+            />
+          )}
+        </UserContext.Consumer>
       </div>
     </div>
   );

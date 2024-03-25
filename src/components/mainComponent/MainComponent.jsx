@@ -5,7 +5,7 @@ import { Sidebar } from "../sidebar/Sidebar";
 import { Audioplayer } from "../audioplayer/Audioplayer";
 import styles from "./MainComponent.module.css";
 
-export const MainComponent = ({ getToken }) => {
+export const MainComponent = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   const [currentTrack, setCurrentTrack] = useState(null);
@@ -17,11 +17,7 @@ export const MainComponent = ({ getToken }) => {
     <div>
       <main style={{ backgroundColor: "#181818" }} className={styles.main}>
         <Navigator />
-        <Centerblock
-          isLoading={isLoading}
-          getToken={getToken}
-          setCurrentTrack={setCurrentTrack}
-        />
+        <Centerblock isLoading={isLoading} setCurrentTrack={setCurrentTrack} />
         <Sidebar isLoading={isLoading} />
       </main>
       {!currentTrack ? null : <Audioplayer currentTrack={currentTrack} />}

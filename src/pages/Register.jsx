@@ -1,5 +1,5 @@
 import { RegisterComponent } from "../components/registerComponent/RegisterComponent";
 
-export const Register = ({ setUser }) => {
-  return <RegisterComponent setUser={setUser} />;
+export const Register = ({ isLoginMode }) => {
+  return <RegisterComponent setUser={isLoginMode} />;
 };

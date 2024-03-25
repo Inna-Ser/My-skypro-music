@@ -13,6 +13,10 @@
   display: contents;
 }
 
+.loginForm {
+  display: contents;
+}
+
 .loginBlock {
     position: fixed;
     display: flex;
@@ -46,6 +50,10 @@
   border: none;
   border-bottom: 1px solid black;
   width: 278px;
-  color: #D0CECE;
+  color: #828c94;;
   margin-top: 30px;
+}
+
+.registrError{
+  color: red
 }

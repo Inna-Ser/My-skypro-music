@@ -4,11 +4,12 @@ import classNames from "classnames";
 import { useEffect, useState } from "react";
 import { todoSignup } from "../../api";
 
-export const RegisterComponent = ({ setUser }) => {
+export const RegisterComponent = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [repeatPassword, setRepeatPassword] = useState("");
-  const [error, setError] = useState(false);
+  const [username, setUserName] = useState("");
+  const [error, setError] = useState(null);
+  const [isSubmitting, setIsSubmitting] = useState(false); // Состояние для отслеживания отправки данных
 
   const navigate = useNavigate();
 
@@ -18,25 +19,28 @@ export const RegisterComponent = ({ setUser }) => {
       setEmail(value);
     } else if (name === "password") {
       setPassword(value);
-    } else if (name === "repeat-password") {
-      setRepeatPassword(value);
+    } else if (name === "username") {
+      setUserName(value);
     }
   };
 
-  const handleRegister = async () => {
+  const handleRegister = async (event) => {
+    event.preventDefault();
     try {
-      await todoSignup({ email, password, repeatPassword });
-      alert(`Выполняется регистрация: ${email} ${password}`);
+      setIsSubmitting(true);
+      await todoSignup({ email, password, username });
+      alert(`Выполняется регистрация: ${email} ${password} ${username}`);
       navigate("/login");
     } catch (error) {
       setError(error.message);
+    } finally {
+      setIsSubmitting(false);
     }
   };
-
   // Сбрасываем ошибку если пользователь меняет данные на форме или меняется режим формы
   useEffect(() => {
     setError(null);
-  }, [email, password, repeatPassword]);
+  }, [email, password, username]);
 
   useEffect(() => {
     localStorage.removeItem("user");
@@ -72,17 +76,25 @@ export const RegisterComponent = ({ setUser }) => {
             ></input>
             <input
               className={styles.loginInput}
-              type="password"
-              name="repeat-password"
-              placeholder="Повторите пароль"
-              value={repeatPassword}
+              type="text"
+              name="username"
+              placeholder="Имя пользователя"
+              value={username}
               onChange={handleInputChange}
             ></input>
           </div>
-          {error && <div>{error}</div>}
-          <button className={styles.loginButton} onClick={handleRegister}>
+          {error && <div className={styles.registrError}>{error}</div>}
+          <button
+            type={"submit"}
+            className={styles.loginButton}
+            onClick={handleRegister}
+            disabled={isSubmitting}
+          >
             Зарегистрироваться
           </button>
+          <Link className={styles.loginLink} to={"/login"}>
+            Войти
+          </Link>
         </>
       </div>
     </div>

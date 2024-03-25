@@ -17,33 +17,41 @@ export async function getTracks() {
 export async function todoSignup({
         email,
         password,
-        repeatPassword
+        username
 }) {
         return fetch(signupHost, {
-                method: "POST",
-                body: JSON.stringify({
-                        login: email,
-                        password,
-                        repeatPassword,
-                }),
-        }).then((response) => {
-                if (response.status === 400) {
-                        throw new Error("Такой пользователь уже существует");
-                }
-                return response.json();
-        });
+                        method: "POST",
+                        body: JSON.stringify({
+                                email,
+                                password,
+                                username,
+                        }),
+                        headers: {
+                                "content-type": "application/json",
+                        },
+                }).then((response) => {
+                        if (response.status === 400) {
+                                throw new Error("Такой пользователь уже существует");
+                        }
+                        return response.json();
+                })
+                .then((json) => console.log(json));
 }
 
 export async function todoLogin({
-        email,
-        password,
+        username,
+        password
 }) {
         return fetch(loginHost, {
                 method: "POST",
                 body: JSON.stringify({
-                        login: email,
+                        username,
                         password,
                 }),
+                headers: {
+                        // API требует обязательного указания заголовка content-type, так апи понимает что мы посылаем ему json строчку в теле запроса
+                        "content-type": "application/json",
+                },
         }).then((response) => {
                 if (response.status === 400) {
                         throw new Error("Неверный логин или пароль");
