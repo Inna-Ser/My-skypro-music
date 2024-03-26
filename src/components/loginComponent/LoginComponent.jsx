@@ -18,8 +18,8 @@ export const LoginComponent = () => {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    if (name === "username") {
-      setUsername(value);
+    if (name === "email") {
+      setEmail(value);
       setAutocompleteOff(true);
     } else if (name === "password") {
       setPassword(value);
@@ -28,15 +28,15 @@ export const LoginComponent = () => {
 
   const handleLogin = async (event) => {
     event.preventDefault();
-    setIsSubmitting(true);
     try {
-      const response = await todoLogin({ username, password });
-      setUser(response);
-      navigate("/");
+      setIsSubmitting(true);
+      const response = await todoLogin({ email, password });
+      if (response.ok) {
+        setUser(response);
+        navigate("/");
+      }
     } catch (error) {
-      setError(
-        "Не удалось войти. Пожалуйста, проверьте правильность введенных данных."
-      );
+      setError(error.message);
     } finally {
       setIsSubmitting(false);
     }
@@ -54,16 +54,16 @@ export const LoginComponent = () => {
         </Link>
         <form
           type={"submit"}
-          onSubmit={handleLogin}
+          // onSubmit={handleLogin}
           className={styles.loginForm}
         >
           <div className={styles.loginBoxInput}>
             <input
               className={styles.loginInput}
               type="text"
-              name="name"
-              placeholder="Логин"
-              value={username}
+              name="email"
+              placeholder="Почта"
+              value={email}
               onChange={handleInputChange}
               autoComplete="off"
             ></input>

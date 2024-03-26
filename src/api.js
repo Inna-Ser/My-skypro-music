@@ -39,13 +39,13 @@ export async function todoSignup({
 }
 
 export async function todoLogin({
-        username,
+        email,
         password
 }) {
         return fetch(loginHost, {
                 method: "POST",
                 body: JSON.stringify({
-                        username,
+                        email,
                         password,
                 }),
                 headers: {
