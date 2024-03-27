@@ -1,3 +1,8 @@
+Автор: Серебрякова Инна
+ожидаемое время выполнения: 12 часов
+реальное время выполнения: 18 часов
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
