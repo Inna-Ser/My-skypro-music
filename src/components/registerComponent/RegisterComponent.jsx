@@ -2,11 +2,12 @@ import { Link, useNavigate } from "react-router-dom";
 import styles from "../loginComponent/LoginComponent.module.css";
 import classNames from "classnames";
 import { useEffect, useState } from "react";
-import { todoSignup } from "../../api";
+import apiFunctions, { todoSignup } from "../../api";
 
 export const RegisterComponent = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [repeatPassword, setRepeatPassword] = useState("");
   const [username, setUserName] = useState("");
   const [error, setError] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false); // Состояние для отслеживания отправки данных
@@ -19,6 +20,8 @@ export const RegisterComponent = () => {
       setEmail(value);
     } else if (name === "password") {
       setPassword(value);
+    } else if (name === "repeat-password") {
+      setRepeatPassword(value);
     } else if (name === "username") {
       setUserName(value);
     }
@@ -26,11 +29,31 @@ export const RegisterComponent = () => {
 
   const handleRegister = async (event) => {
     event.preventDefault();
+    setIsSubmitting(true);
     try {
-      setIsSubmitting(true);
-      await todoSignup({ email, password, username });
-      alert(`Выполняется регистрация: ${email} ${password} ${username}`);
-      navigate("/login");
+      if (!email) {
+        setError("Не заполнено 'Почта'");
+        return;
+      }
+      if (!password) {
+        setError("Не заполнено 'Пароль'");
+        return;
+      }
+      if (!repeatPassword) {
+        setError("Подтвердите пароль");
+        return;
+      }
+      if (!username) {
+        setError("Не заполнено 'Имя пользователя'");
+        return;
+      }
+      if (password !== repeatPassword) {
+        setError("Пароли не совпадают");
+      } else {
+        await apiFunctions.todoSignup({ email, password, username });
+        alert(`Выполняется регистрация: ${email} ${username}`);
+        navigate("/login");
+      }
     } catch (error) {
       setError(error.message);
     } finally {
@@ -40,7 +63,7 @@ export const RegisterComponent = () => {
   // Сбрасываем ошибку если пользователь меняет данные на форме или меняется режим формы
   useEffect(() => {
     setError(null);
-  }, [email, password, username]);
+  }, [email, password, repeatPassword, username]);
 
   useEffect(() => {
     localStorage.removeItem("user");
@@ -76,6 +99,14 @@ export const RegisterComponent = () => {
             ></input>
             <input
               className={styles.loginInput}
+              type="password"
+              name="repeat-password"
+              placeholder="Подтвердите пароль"
+              value={repeatPassword}
+              onChange={handleInputChange}
+            ></input>
+            <input
+              className={styles.loginInput}
               type="text"
               name="username"
               placeholder="Имя пользователя"
@@ -90,7 +121,7 @@ export const RegisterComponent = () => {
             onClick={handleRegister}
             disabled={isSubmitting}
           >
-            Зарегистрироваться
+            {isSubmitting ? "Регистрация..." : "Зарегистрироваться"}
           </button>
           <Link className={styles.loginLink} to={"/login"}>
             Войти

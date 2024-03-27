@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import styles from "./LoginComponent.module.css";
 import { Link, useNavigate } from "react-router-dom";
 import classNames from "classnames";
-import { todoLogin } from "../../api";
+import apiFunctions, { todoLogin } from "../../api";
 import { UserContext } from "../../userContext";
 
 export const LoginComponent = () => {
@@ -28,13 +28,19 @@ export const LoginComponent = () => {
 
   const handleLogin = async (event) => {
     event.preventDefault();
+    setIsSubmitting(true);
     try {
-      setIsSubmitting(true);
-      const response = await todoLogin({ email, password });
-      if (response.ok) {
-        setUser(response);
-        navigate("/");
+      if (!email) {
+        setError("Не заполнено 'Почта'");
+        return;
       }
+      if (!password) {
+        setError("Не заполнено 'Пароль'");
+        return;
+      }
+      const response = await apiFunctions.todoLogin({ email, password });
+      setUser(response);
+      navigate("/");
     } catch (error) {
       setError(error.message);
     } finally {
@@ -77,8 +83,14 @@ export const LoginComponent = () => {
               autoComplete="off"
             ></input>
           </div>
-          <button className={styles.loginButton} onClick={handleLogin}>
-            Войти
+          {error && <div className={styles.registrError}>{error}</div>}
+          <button
+            className={styles.loginButton}
+            type={"submit"}
+            onClick={handleLogin}
+            disabled={isSubmitting}
+          >
+            {isSubmitting ? "Вход..." : "Войти"}
           </button>
           <Link className={styles.loginLink} to={"/registr"}>
             Зарегистрироваться

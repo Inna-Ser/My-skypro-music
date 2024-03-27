@@ -1,12 +1,18 @@
 .loginLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 278px;
-  height: 52px;
+  height: 44px;
   border-radius: 6px;
   border: 1px solid black;
   font-size: 18px;
-  top: 340px;
   text-align: center; /* Выравнивание текста по центру */
   line-height: 50px;
+  &:hover{
+    background-color: gray;
+    color: white;
+  }
 }
 
 .loginBoxInput {
@@ -18,8 +24,8 @@
 }
 
 .loginBlock {
-    position: fixed;
-    display: flex;
+  position: fixed;
+  display: flex;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -28,19 +34,22 @@
   border-radius: 12px;
   background-color: white;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   padding-block: 41px;
 }
 
 .loginButton {
   width: 278px;
-  height: 52px;
+  height: 48px;
   border-radius: 6px;
   background-color: #580EA2;
   font-size: 18px;
   color: #FFFF;
   margin-top: 30px;
+  &:hover {
+    background-color: #463f4d;
+  }
 }
 
 .loginInput {
@@ -54,6 +63,10 @@
   margin-top: 30px;
 }
 
-.registrError{
+.registrError {
   color: red
+}
+
+.disabled {
+  background-color: gray;
 }
