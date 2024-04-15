@@ -27,8 +27,13 @@
   .sidebarIcon {
     width: 43px;
     height: 43px;
-    background-color: #313131;
+    background-color: transparent;
     border-radius: 50%;
     cursor: pointer;
+  }
+
+  .light {
+    color: black;
+    margin-right: 16px;
   }
   

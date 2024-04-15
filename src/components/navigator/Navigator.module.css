@@ -1,6 +1,6 @@
 .mainNav {
     width: 244px;
-    background-color: #181818;
+    background-color: #1C1C1C;
     padding: 20px 0 20px 36px;
   }
 
@@ -32,5 +32,11 @@
     width: 113.33px;
     height: 17px;
     color: #181818;
+  }
+
+  .light {
+    width: 244px;
+    background-color: #F6F5F3;
+    padding: 20px 0 20px 36px;
   }
   

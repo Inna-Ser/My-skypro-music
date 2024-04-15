@@ -1,6 +1,6 @@
 import { MainComponent } from "../components/mainComponent/MainComponent";
 
-export const Main = ({ getToken }) => {
+export const Main = () => {
   return (
     <div>
       <MainComponent />

@@ -4,15 +4,12 @@ import {
   TrackAuthor,
   TrackTime,
   TrackTitle,
-} from "../trackComponents/TrackComponents";
+} from "../../trackComponents/TrackComponents";
 import "react-loading-skeleton/dist/skeleton.css";
-import { useParams } from "react-router-dom";
 import classNames from "classnames";
 import styles from "./Track.module.css";
 
 export const Track = (props) => {
-  // const params = useParams();
-  // const track = tracks.find((track) => track.id === Number(params.id));
 
   return (
     <div onClick={props.setCurrentTrack} className={styles.playlistItem}>
@@ -20,7 +17,7 @@ export const Track = (props) => {
         {props.isLoading ? (
           <Skeleton width={"50px"} height={"50px"} baseColor="grey" />
         ) : (
-          <TrackTitle title={props.title} />
+          <TrackTitle title={props.title} id={props.id} />
         )}
         {props.isLoading ? (
           <Skeleton width={"350px"} height={"20px"} baseColor="grey" />

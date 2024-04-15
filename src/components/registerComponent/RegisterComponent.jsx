@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import styles from "../loginComponent/LoginComponent.module.css";
 import classNames from "classnames";
 import { useEffect, useState } from "react";
-import apiFunctions, { todoSignup } from "../../api";
+import apiFunctions from "../../api";
 
 export const RegisterComponent = () => {
   const [email, setEmail] = useState("");
@@ -10,7 +10,7 @@ export const RegisterComponent = () => {
   const [repeatPassword, setRepeatPassword] = useState("");
   const [username, setUserName] = useState("");
   const [error, setError] = useState(null);
-  const [isSubmitting, setIsSubmitting] = useState(false); // Состояние для отслеживания отправки данных
+  const [isSubmitting, setIsSubmitting] = useState(false); 
 
   const navigate = useNavigate();
 

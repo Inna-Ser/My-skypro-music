@@ -3,6 +3,7 @@ import styles from "./Centerblock.module.css";
 import { PlayList } from "../playList/PlayList";
 import classNames from "classnames";
 import { UserContext } from "../../userContext";
+import { useThemeContext } from "../../themesComponent/ThemesComponent";
 
 const ContentTitle = () => {
   return (
@@ -26,10 +27,17 @@ const ContentTitle = () => {
 };
 
 const Search = () => {
+  const { theme } = useThemeContext();
   return (
     <div className={classNames(styles.centerblockSearch, styles.search)}>
       <svg className={styles.searchSvg}>
-        <use xlinkHref="img/icon/sprite.svg#icon-search"></use>
+        <use
+          xlinkHref={
+            theme.mode === "dark"
+              ? "img/icon/sprite.svg#icon-search-dark"
+              : "img/icon/sprite.svg#icon-search-light"
+          }
+        ></use>
       </svg>
       <input
         className={styles.searchText}

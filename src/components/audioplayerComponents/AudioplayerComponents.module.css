@@ -10,6 +10,7 @@
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
+    cursor: pointer;
   }
   
   .playerBtnPrev {
@@ -19,22 +20,34 @@
   .playerBtnPrevSvg {
     width: 15px;
     height: 14px;
+    fill: inherit;
+    stroke: #D9D9D9;
+    &:hover {
+      stroke: #696969
+    }
   }
   
   .playerBtnPlay {
     margin-right: 23px;
+    cursor: pointer;
   }
 
   .playerBtnPlaySvg {
     width: 22px;
     height: 20px;
-    fill: #d9d9d9;
+    fill: #D9D9D9;
+    &:hover {
+      stroke: #696969
+    }
   }
 
   .playerBtnPauseSvg {
     width: 22px;
     height: 20px;
-    fill: #d9d9d9;
+    fill: #D9D9D9;
+    &:hover {
+      stroke: #696969
+    }
   }
 
   .playerBtnPause {
@@ -42,6 +55,7 @@
     display: flex;
     align-items: center;
     margin-right: 23px;
+    cursor: pointer;
   }
 
   .playerBtnNext {
@@ -53,7 +67,10 @@
     width: 15px;
     height: 14px;
     fill: inherit;
-    stroke: #d9d9d9;
+    stroke: #D9D9D9;
+    &:hover {
+      stroke: #696969
+    }
   }
   
   .playerBtnRepeat {
@@ -64,7 +81,10 @@
     width: 18px;
     height: 12px;
     fill: transparent;
-    stroke: #7d7b7b;
+    stroke: #696969;
+    &:hover {
+      stroke: #ACACAC;
+    }
   }
   
   .playerBtnShuffle {
@@ -80,7 +100,10 @@
     width: 19px;
     height: 12px;
     fill: transparent;
-    stroke: #7d7b7b;
+    stroke: #696969;
+    &:hover {
+      stroke: #ACACAC;
+    }
   }
   
   .trackPlayImage {
@@ -107,7 +130,10 @@
     width: 18px;
     height: 17px;
     fill: transparent;
-    stroke: #4e4e4e;
+    stroke: #D9D9D9;
+    &:hover {
+      stroke: #696969
+    }
   }
   
   .trackPlayAuthor {
@@ -122,7 +148,7 @@
     font-weight: 400;
     font-size: 16px;
     line-height: 24px;
-    color: #ffffff;
+    color: #FFFFFF;
     white-space: nowrap;
     margin-right: 30px;
   }
@@ -139,7 +165,7 @@
     font-weight: 400;
     font-size: 13px;
     line-height: 24px;
-    color: #ffffff;
+    color: #FFFFFF;
   }
   
   .trackPlayLikeDis {
@@ -159,13 +185,17 @@
   .trackPlayLike,
   .trackPlayDislike {
     padding: 5px;
+    cursor: pointer;
   }
   
   .trackPlayLikeSvg {
     width: 14px;
     height: 12px;
     fill: transparent;
-    stroke: #7d7b7b;
+    stroke: #696969;
+    &:hover {
+      stroke: #ACACAC;
+    }
   }
   
   .trackPlayDislike {
@@ -176,9 +206,47 @@
     width: 14.34px;
     height: 13px;
     fill: transparent;
-    stroke: #7d7b7b;
+    stroke: #696969;
+    &:hover {
+      stroke: #ACACAC;
+    }
+  }
+
+  .light {
+    margin-right: 30px;
+    color: black;
+    stroke: #B1B1B1;
+  }
+
+  .lightImg {
+    width: 51px;
+    height: 51px;
+    padding: 16px;
+    background: #F6F4F4;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    margin-right: 17px;
+    stroke: #4E4E4E
+  }
+  
+  .lightToggle {
+    stroke: #B1B1B1;
+    &:hover {
+      stroke: #707070;
+    }
+  }
+
+  .lightImgActive {
+    stroke: #000000;
   }
 
   .active {
-    stroke: #ffffff;
+    stroke: #FFFFFF;
   }

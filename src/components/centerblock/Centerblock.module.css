@@ -75,7 +75,7 @@
   
   .searchText::-ms-input-placeholder {
     background-color: transparent;
-    color: #ffffff;
+    color: #928888;
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
@@ -84,7 +84,7 @@
   
   .searchText::placeholder {
     background-color: transparent;
-    color: #ffffff;
+    color: #928888;
     font-style: normal;
     font-weight: 400;
     font-size: 16px;

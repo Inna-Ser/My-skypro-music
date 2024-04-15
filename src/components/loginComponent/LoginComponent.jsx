@@ -8,7 +8,6 @@ import { UserContext } from "../../userContext";
 export const LoginComponent = () => {
   const { setUser } = useContext(UserContext);
   const [email, setEmail] = useState("");
-  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false); // Состояние для отслеживания отправки данных
@@ -60,7 +59,6 @@ export const LoginComponent = () => {
         </Link>
         <form
           type={"submit"}
-          // onSubmit={handleLogin}
           className={styles.loginForm}
         >
           <div className={styles.loginBoxInput}>

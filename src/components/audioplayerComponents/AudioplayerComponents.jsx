@@ -1,5 +1,6 @@
 import classNames from "classnames";
 import styles from "./AudioplayerComponents.module.css";
+import { useThemeContext } from "../../themesComponent/ThemesComponent";
 
 export const Prev = ({ playPrevTrack }) => {
   const handleClick = () => {
@@ -60,6 +61,7 @@ export const Next = ({ playNextTrack }) => {
 };
 
 export const Repeat = ({ playRepeatTrack, isActive }) => {
+  const { theme } = useThemeContext();
   return (
     <div
       className={classNames(styles.playerBtnRepeat, styles._btnIcon)}
@@ -67,9 +69,13 @@ export const Repeat = ({ playRepeatTrack, isActive }) => {
     >
       <svg
         className={
-          !isActive
-            ? styles.playerBtnRepeatSvg
-            : classNames(styles.playerBtnRepeatSvg, styles.active)
+          theme.mode === "dark"
+            ? !isActive
+              ? styles.playerBtnShuffleSvg
+              : classNames(styles.playerBtnShuffleSvg, styles.active)
+            : !isActive
+            ? classNames(styles.playerBtnShuffleSvg, styles.lightToggle)
+            : classNames(styles.playerBtnShuffleSvg, styles.lightImgActive)
         }
         alt="repeat"
       >
@@ -80,6 +86,7 @@ export const Repeat = ({ playRepeatTrack, isActive }) => {
 };
 
 export const Shuffle = ({ isActive, playShuffleTrack }) => {
+  const { theme } = useThemeContext();
   return (
     <div
       className={classNames(styles.playerBtnShuffle, styles._btnIcon)}
@@ -87,9 +94,13 @@ export const Shuffle = ({ isActive, playShuffleTrack }) => {
     >
       <svg
         className={
-          !isActive
-            ? styles.playerBtnShuffleSvg
-            : classNames(styles.playerBtnShuffleSvg, styles.active)
+          theme.mode === "dark"
+            ? !isActive
+              ? styles.playerBtnShuffleSvg
+              : classNames(styles.playerBtnShuffleSvg, styles.active)
+            : !isActive
+            ? classNames(styles.playerBtnShuffleSvg, styles.lightToggle)
+            : classNames(styles.playerBtnShuffleSvg, styles.lightImgActive)
         }
         alt="shuffle"
       >
@@ -100,31 +111,48 @@ export const Shuffle = ({ isActive, playShuffleTrack }) => {
 };
 
 export const TrackPlayImage = () => {
+  const { theme } = useThemeContext();
   return (
-    <div className={styles.trackPlayImage}>
+    <div
+      className={
+        theme.mode === "dark" ? styles.trackPlayImage : styles.lightImg
+      }
+    >
       <svg className={styles.trackPlaySvg} alt="music">
-        <use xlinkHref="img/icon/sprite.svg#icon-note"></use>
+        <use xlinkHref={"img/icon/sprite.svg#icon-note-dark"}></use>
       </svg>
     </div>
   );
 };
 
 export function TrackPlayAuthor({ name }) {
+  const { theme } = useThemeContext();
   return (
     <div className={styles.trackPlayAuthor}>
-      <a className={styles.trackPlayAuthorLink} href="http://">
+      <div
+        className={
+          theme.mode === "dark" ? styles.trackPlayAuthorLink : styles.light
+        }
+        href="http://"
+      >
         {name}
-      </a>
+      </div>
     </div>
   );
 }
 
 export function TrackPlayAlbum({ author }) {
+  const { theme } = useThemeContext();
   return (
     <div className={styles.trackPlayAlbum}>
-      <a className={styles.trackPlayAlbumLink} href="http://">
+      <div
+        className={
+          theme.mode === "dark" ? styles.trackPlayAlbumLink : styles.light
+        }
+        href="http://"
+      >
         {author}
-      </a>
+      </div>
     </div>
   );
 }

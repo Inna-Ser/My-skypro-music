@@ -7,7 +7,7 @@
   border-radius: 6px;
   border: 1px solid black;
   font-size: 18px;
-  text-align: center; /* Выравнивание текста по центру */
+  text-align: center; 
   line-height: 50px;
   &:hover{
     background-color: gray;

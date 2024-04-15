@@ -3,20 +3,29 @@ import {
   TrackTitleText,
 } from "./trackTitleComponent/TrackTitleComponent";
 import styles from "./TrackComponents.module.css";
+import { useThemeContext } from "../../themesComponent/ThemesComponent";
 
 export const TrackTitle = (props) => {
   return (
     <div className={styles.trackTitle}>
-      <TrackTitleImg />
+      <TrackTitleImg id={props.id} />
       <TrackTitleText title={props.title} />
     </div>
   );
 };
 
 export const TrackAuthor = (props) => {
+  const { theme } = useThemeContext();
+
   return (
     <div className={styles.trackAuthor}>
-      <div className={styles.trackAuthorLink}>{props.author}</div>
+      <div
+        className={
+          theme.mode === "dark" ? styles.trackAuthorLink : styles.light
+        }
+      >
+        {props.author}
+      </div>
     </div>
   );
 };

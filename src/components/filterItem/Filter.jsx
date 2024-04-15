@@ -3,10 +3,16 @@ import { filterYears } from "../../utils/filterYears";
 import { tracks } from "../../utils/tracks";
 import styles from "./Filter.module.css";
 import classNames from "classnames";
+import { useThemeContext } from "../../themesComponent/ThemesComponent";
 
 const FilterAuthor = () => {
+  const { theme } = useThemeContext();
   return (
-    <ul className={styles.filterListContaner}>
+    <ul
+      className={
+        theme.mode === "dark" ? styles.filterListContaner : styles.light
+      }
+    >
       {tracks.map(({ author }) => (
         <li className={styles.filterListItem}>{author}</li>
       ))}
@@ -15,8 +21,13 @@ const FilterAuthor = () => {
 };
 
 const FilterYear = () => {
+  const { theme } = useThemeContext();
   return (
-    <ul className={styles.filterListContaner}>
+    <ul
+      className={
+        theme.mode === "dark" ? styles.filterListContaner : styles.light
+      }
+    >
       {filterYears.map(({ year }) => (
         <li className={styles.filterListItem}>{year}</li>
       ))}
@@ -25,11 +36,16 @@ const FilterYear = () => {
 };
 
 const FilterGenre = ({ tracks }) => {
+  const { theme } = useThemeContext();
   const arrGenre = tracks.map((item) => item.genre);
   const uniqueGenre = [...new Set(arrGenre)];
   return (
     <div className={styles.filterListGenre}>
-      <ul className={styles.filterListContaner}>
+      <ul
+        className={
+          theme.mode === "dark" ? styles.filterListContaner : styles.light
+        }
+      >
         {uniqueGenre.map((genre, index) => (
           <li className={styles.filterListItem} key={index}>
             {genre}{" "}

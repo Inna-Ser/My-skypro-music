@@ -2,16 +2,27 @@ import { NavLink } from "react-router-dom";
 import styles from "./Personal.module.css";
 import { useContext } from "react";
 import { UserContext } from "../../../userContext";
+import { useThemeContext } from "../../../themesComponent/ThemesComponent";
 
 export const Personal = () => {
   const { user } = useContext(UserContext);
+  const { theme } = useThemeContext();
   return (
     <div className={styles.sidebarPersonal}>
-      <p className={styles.sidebarPersonalName}>{user.username}</p>
+      <p
+        className={
+          theme.mode === "dark" ? styles.sidebarPersonalName : styles.light
+        }
+      >
+        {user.username}
+      </p>
       <NavLink className={styles.sidebarIcon} to="/login">
-        <svg alt="logout">
-          <use xlinkHref="img/icon/sprite.svg#logout"></use>
-        </svg>
+        <img
+          alt="logout"
+          src={
+            theme.mode === "dark" ? "img/logoutDark.png" : "img/logoutLight.png"
+          }
+        ></img>
       </NavLink>
     </div>
   );

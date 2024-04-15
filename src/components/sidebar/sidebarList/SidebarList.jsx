@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import React from "react";
 import Skeleton from "react-loading-skeleton";
-import "./sidebarList.css";
+import "./SidebarList.module.css";
 
 export const SidebarList = ({ category, isLoading }) => {
   return (

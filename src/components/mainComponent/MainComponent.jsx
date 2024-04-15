@@ -4,23 +4,28 @@ import { Centerblock } from "../centerblock/Centerblock";
 import { Sidebar } from "../sidebar/Sidebar";
 import { Audioplayer } from "../audioplayer/Audioplayer";
 import styles from "./MainComponent.module.css";
+import { themes, useThemeContext } from "../../themesComponent/ThemesComponent";
+import { useSelector } from "react-redux";
 
 export const MainComponent = () => {
   const [isLoading, setIsLoading] = useState(true);
-
-  const [currentTrack, setCurrentTrack] = useState(null);
+  const currentTrack = useSelector((store) => store.tracks.currentTrack)
+  const { theme } = useThemeContext();
 
   useEffect(() => {
     setTimeout(() => setIsLoading(false), 5000);
   }, []);
   return (
     <div>
-      <main style={{ backgroundColor: "#181818" }} className={styles.main}>
+      <main
+        style={theme.mode === "light" ? themes.light : themes.dark}
+        className={styles.main}
+      >
         <Navigator />
-        <Centerblock isLoading={isLoading} setCurrentTrack={setCurrentTrack} />
+        <Centerblock isLoading={isLoading} />
         <Sidebar isLoading={isLoading} />
       </main>
-      {!currentTrack ? null : <Audioplayer currentTrack={currentTrack} />}
+      {!currentTrack ? null : <Audioplayer />}
       <footer className={styles.footer}></footer>
     </div>
   );

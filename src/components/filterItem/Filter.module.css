@@ -54,7 +54,7 @@
     font-weight: 400;
     font-size: 16px;
     line-height: 24px;
-    border: 1px solid #ffffff;
+    border: 1px solid#928888 ;
     border-radius: 60px;
     padding: 6px 20px;
   & FilterButton:not(:last-child) {
@@ -65,6 +65,21 @@
     color: #d9b6ff;
     cursor: pointer;
   }
+}
+
+.light {
+  max-height: 305px;
+    position: absolute;
+    top: 50px;
+    width: 248px;
+    height: fit-content;
+    padding: 34px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    overflow: auto;
+  background-color: #F6F5F3;
 }
 
 .active {
