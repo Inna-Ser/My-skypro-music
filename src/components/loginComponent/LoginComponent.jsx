@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import classNames from "classnames";
 import apiFunctions, { todoLogin } from "../../api";
 import { UserContext } from "../../userContext";
+import { useSignInMutation } from "../../services/auth";
 
 export const LoginComponent = () => {
   const { setUser } = useContext(UserContext);
@@ -12,6 +13,7 @@ export const LoginComponent = () => {
   const [error, setError] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false); // Состояние для отслеживания отправки данных
   const [autocompleteOff, setAutocompleteOff] = useState(false);
+  const [signIn] = useSignInMutation();
 
   const navigate = useNavigate();
 
@@ -37,9 +39,15 @@ export const LoginComponent = () => {
         setError("Не заполнено 'Пароль'");
         return;
       }
-      const response = await apiFunctions.todoLogin({ email, password });
-      setUser(response);
-      navigate("/");
+      signIn({ email, password })
+        .unwrap()
+        .then((response) => {
+          setUser(response);
+          navigate("/");
+        })
+        .catch((error) => {
+          throw new Error(error.message);
+        });
     } catch (error) {
       setError(error.message);
     } finally {
@@ -57,10 +65,7 @@ export const LoginComponent = () => {
             alt="logo"
           />
         </Link>
-        <form
-          type={"submit"}
-          className={styles.loginForm}
-        >
+        <form type={"submit"} className={styles.loginForm}>
           <div className={styles.loginBoxInput}>
             <input
               className={styles.loginInput}

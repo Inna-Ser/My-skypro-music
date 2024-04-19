@@ -8,27 +8,20 @@ import {
   setInitialTracks,
 } from "../../store/slices/trackSlice";
 import { useDispatch } from "react-redux";
+import { useGetAllTracksQuery } from "../../services/tracks";
 
 export const PlayList = ({ isLoading }) => {
   const [tracksList, setTracksList] = useState(Array(12));
   const [addTodoError, setAddTodoError] = useState(null);
   const dispatch = useDispatch();
+  const {data} = useGetAllTracksQuery();
 
   useEffect(() => {
-    apiFunctions
-      .getTracks()
-      .then((tracks) => {
-        setTracksList(tracks);
-        dispatch(setInitialTracks(tracks));
-      })
-      .catch((error) => {
-        if (error.message === "Failed to fetch") {
-          setAddTodoError("Не удалось загрузить треки");
-          return;
-        }
-        setAddTodoError(error.message);
-      });
-  }, []);
+    if(data) {
+      setTracksList(data);
+      dispatch(setInitialTracks(data));
+    }
+  }, [data]);
 
   return (
     <div className={classNames(styles.content__playlist, styles.playlist)}>

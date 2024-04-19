@@ -18,17 +18,22 @@ import { ProgressBar } from "./progressbar/Progressbar.jsx";
 import { useThemeContext } from "../../themesComponent/ThemesComponent.jsx";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  setIsDisliked,
+  setIsLiked,
   setIsPlaying,
   setIsShuffle,
   setNext,
   setPrev,
 } from "../../store/slices/trackSlice.js";
+import { store } from "../../store/store.js";
+import { isDisabled } from "@testing-library/user-event/dist/utils/index.js";
 
 export const Audioplayer = () => {
   const audioRef = useRef(null);
   const isPlaying = useSelector((store) => store.tracks.isPlaying);
   const currentTrack = useSelector((store) => store.tracks.currentTrack);
   const isShuffle = useSelector((store) => store.tracks.isShuffle);
+
   const [isLoop, setIsLoop] = useState(false);
   const dispatch = useDispatch();
 
@@ -87,7 +92,16 @@ export const Audioplayer = () => {
     setIsLoop((prev) => !prev);
   };
 
+  const toggleLike = () => {
+    dispatch(setIsLiked(true));
+  };
+
+  const toggleDislike = () => {
+    dispatch(setIsDisliked(!isDisabled));
+  };
+
   const { theme } = useThemeContext();
+
   return (
     <>
       <audio
@@ -129,7 +143,10 @@ export const Audioplayer = () => {
                   <TrackPlayAuthor name={currentTrack.name} />
                 </div>
                 <TrackPlayAlbum author={currentTrack.author} />
-                <TrackPlayLike />
+                <TrackPlayLike
+                  toggleLike={toggleLike}
+                  toggleDislike={toggleDislike}
+                />
               </div>
             </div>
             <VolumeBlock audioRef={audioRef} />

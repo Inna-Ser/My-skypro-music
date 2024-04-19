@@ -1,6 +1,7 @@
 import classNames from "classnames";
 import styles from "./AudioplayerComponents.module.css";
 import { useThemeContext } from "../../themesComponent/ThemesComponent";
+import { useSelector } from "react-redux";
 
 export const Prev = ({ playPrevTrack }) => {
   const handleClick = () => {
@@ -157,22 +158,48 @@ export function TrackPlayAlbum({ author }) {
   );
 }
 
-export function TrackPlayLike() {
+export function TrackPlayLike({ toggleLike, toggleDislike }) {
+  const { theme } = useThemeContext();
+  const isLiked = useSelector((store) => store.tracks.isLiked);
+  const isDisliked = useSelector((store) => store.tracks.isDisliked);
+
   return (
     <div className={styles.trackPlayLikeDis}>
       <div
         className={classNames(styles.trackPlayLike, styles._btnIcon)}
-        onClick={() => alert("логика еще не написана")}
+        onClick={toggleLike}
       >
-        <svg className={styles.trackPlayLikeSvg} alt="like">
+        <svg
+          className={
+            theme.mode === "dark"
+              ? !isLiked
+                ? styles.trackPlayLikeSvg
+                : classNames(styles.trackPlayLikeSvg, styles.active)
+              : !isLiked
+              ? classNames(styles.trackPlayLikeSvg, styles.lightToggle)
+              : classNames(styles.trackPlayLikeSvg, styles.lightImgActive)
+          }
+          alt="like"
+        >
           <use xlinkHref="img/icon/sprite.svg#icon-like"></use>
         </svg>
       </div>
       <div
         className={classNames(styles.trackPlayDislike, styles._btnIcon)}
-        onClick={() => alert("логика еще не написана")}
+        onClick={toggleDislike}
       >
-        <svg className={styles.trackPlayDislikeSvg} alt="dislike">
+        <svg
+          className={
+            theme.mode === "dark"
+              ? !isDisliked
+                ? styles.trackPlayDislikeSvg
+                : classNames(styles.trackPlayDislikeSvg, styles.active)
+              : !isDisliked
+              ? classNames(styles.trackPlayDislikeSvg, styles.lightToggle)
+              : classNames(styles.trackPlayDislikeSvg, styles.lightImgActive)
+          }
+          alt="dislike"
+        >
           <use xlinkHref="img/icon/sprite.svg#icon-dislike"></use>
         </svg>
       </div>
