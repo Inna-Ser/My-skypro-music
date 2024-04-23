@@ -2,7 +2,6 @@ import { useContext, useState } from "react";
 import styles from "./LoginComponent.module.css";
 import { Link, useNavigate } from "react-router-dom";
 import classNames from "classnames";
-import apiFunctions, { todoLogin } from "../../api";
 import { UserContext } from "../../userContext";
 import { useSignInMutation } from "../../services/auth";
 

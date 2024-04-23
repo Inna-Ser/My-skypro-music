@@ -6,36 +6,43 @@ import { useEffect, useState } from "react";
 import {
   setCurrentTrack,
   setInitialTracks,
+  setIsLiked,
 } from "../../store/slices/trackSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useGetAllTracksQuery } from "../../services/tracks";
 
-export const PlayList = ({ isLoading }) => {
+export const PlayList = () => {
   const [tracksList, setTracksList] = useState(Array(12));
   const [addTodoError, setAddTodoError] = useState(null);
   const dispatch = useDispatch();
-  const {data} = useGetAllTracksQuery();
+  const { data } = useGetAllTracksQuery();
+  const [isLoading, setIsLoading] = useState(true);
+  const isLiked = useSelector((store) => store.tracks.isLiked);
 
   useEffect(() => {
-    if(data) {
+    if (data) {
       setTracksList(data);
       dispatch(setInitialTracks(data));
+      setIsLoading(false);
+      dispatch(setIsLiked(true));
     }
   }, [data]);
 
   return (
     <div className={classNames(styles.content__playlist, styles.playlist)}>
       <p style={{ color: "purple" }}>{addTodoError}</p>
+
       {tracksList.map((track) => (
         <Track
           id={track.id}
           setCurrentTrack={() => dispatch(setCurrentTrack(track))}
-          isLoading={isLoading}
+          isLoading={setIsLoading}
           key={track.id}
           title={track.name}
           author={track.author}
           album={track.album}
           time={track.duration_in_seconds}
+          isLiked={track.isLiked}
         />
       ))}
     </div>

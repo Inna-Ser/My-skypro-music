@@ -13,6 +13,7 @@ const trackSlice = createSlice({
         isShuffle: false,
         initialTracks: [],
         shuffleTracks: [],
+        likedTracks: [],
         currentTrackIndex: null,
         isLiked: false,
         isDisliked: false,
@@ -54,18 +55,28 @@ const trackSlice = createSlice({
 
 
         },
-        setIsLiked: (state) => {
-            state.isLiked = !state.isLiked;
-            state.isDisliked = false;
+        setIsLiked: (state, action) => {
+            state.isLiked = action.payload;
+            // Если трек понравился, добавляем его в список понравившихся треков
+            if (action.payload) {
+                state.likedTracks.push(state.currentTrack);
+            } else {
+                // Если трек больше не понравился, удаляем его из списка понравившихся треков
+                const index = state.likedTracks.findIndex(track => track.id === state.currentTrack.id);
+                if (index !== -1) {
+                    state.likedTracks.splice(index, 1);
+                }
+            }
+            state.isDisliked = false; // Сбрасываем флаг "дизлайк"
         },
-        setIsDisliked: (state) => {
-            state.isDisliked = !state.isDisliked;
-            state.isLiked = false;
+
+        setIsDisliked: (state, action) => {
+            state.isDisliked = action.payload;
+            // Можно добавить аналогичную логику для обработки действия "дизлайк"
+            state.isLiked = false; // Сбрасываем флаг "лайк"
         },
-        setInitialTracks: (state, action) => {
-            state.initialTracks = action.payload
-        },
-    }
+    },
+
 })
 
 export const {

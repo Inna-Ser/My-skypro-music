@@ -12,9 +12,17 @@ export const tracksApi = createApi({
         getAllTracks: builder.query({
             query: () => "catalog/track/all",
         }),
+        todoLike: builder.mutation({
+            query: (id) => `catalog/track/${id}`
+        }),
+        todoDislike: builder.mutation({
+            query: (id) => `catalog/track/${id}`
+        }),
     }),
 });
 
 export const {
-    useGetAllTracksQuery
+    useGetAllTracksQuery,
+    useTodoLikeMutation,
+    useTodoDislikeMutation,
 } = tracksApi;

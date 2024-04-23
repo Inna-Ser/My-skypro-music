@@ -18,7 +18,7 @@ const ContentTitle = () => {
         АЛЬБОМ
       </div>
       <div className={classNames(styles.playlistTitleCol, styles.col04)}>
-        <svg className={styles.playlistTitleSvg} alt="time">
+        <svg className={styles.playlistTitleSvg} alt="title">
           <use xlinkHref="img/icon/sprite.svg#icon-watch"></use>
         </svg>
       </div>

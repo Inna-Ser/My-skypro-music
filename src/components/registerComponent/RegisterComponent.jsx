@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import styles from "../loginComponent/LoginComponent.module.css";
 import classNames from "classnames";
 import { useEffect, useState } from "react";
-import apiFunctions from "../../api";
+import { useSignUpMutation } from "../../services/auth";
 
 export const RegisterComponent = () => {
   const [email, setEmail] = useState("");
@@ -10,7 +10,8 @@ export const RegisterComponent = () => {
   const [repeatPassword, setRepeatPassword] = useState("");
   const [username, setUserName] = useState("");
   const [error, setError] = useState(null);
-  const [isSubmitting, setIsSubmitting] = useState(false); 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [signUp] = useSignUpMutation();
 
   const navigate = useNavigate();
 
@@ -50,9 +51,15 @@ export const RegisterComponent = () => {
       if (password !== repeatPassword) {
         setError("Пароли не совпадают");
       } else {
-        await apiFunctions.todoSignup({ email, password, username });
-        alert(`Выполняется регистрация: ${email} ${username}`);
-        navigate("/login");
+        signUp({ email, password, username })
+          .unwrap()
+          .then(() => {
+            alert(`Выполняется регистрация: ${email} ${username}`);
+            navigate("/login");
+          })
+          .catch((error) => {
+            throw new Error(error.message);
+          });
       }
     } catch (error) {
       setError(error.message);

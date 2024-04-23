@@ -33,13 +33,12 @@ export const Audioplayer = () => {
   const isPlaying = useSelector((store) => store.tracks.isPlaying);
   const currentTrack = useSelector((store) => store.tracks.currentTrack);
   const isShuffle = useSelector((store) => store.tracks.isShuffle);
-
   const [isLoop, setIsLoop] = useState(false);
   const dispatch = useDispatch();
 
   const togglePlay = () => {
     if (audioRef.current.paused) {
-      audioRef.current.play().catch((err) => console.log(err));
+      // audioRef.current.play().catch((err) => console.log(err));
       dispatch(setIsPlaying(true));
     }
   };
@@ -63,12 +62,12 @@ export const Audioplayer = () => {
       currentRef?.removeEventListener("ended", handleEnded);
       currentRef?.removeEventListener("loadedmetadata", handleLoadedMetadata);
     };
-  }, [audioRef.current]);
+  }, []);
 
   useEffect(() => {
-    if (isPlaying === true) {
+    if (isPlaying && audioRef.current) {
       audioRef.current.play().catch((err) => console.log(err));
-    } else {
+    } else if (!isPlaying && audioRef.current) {
       audioRef.current.pause();
     }
   }, [isPlaying]);

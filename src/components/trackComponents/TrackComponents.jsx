@@ -4,6 +4,8 @@ import {
 } from "./trackTitleComponent/TrackTitleComponent";
 import styles from "./TrackComponents.module.css";
 import { useThemeContext } from "../../themesComponent/ThemesComponent";
+import { useSelector } from "react-redux";
+import classNames from "classnames";
 
 export const TrackTitle = (props) => {
   return (
@@ -39,9 +41,24 @@ export const TrackAlbum = (props) => {
 };
 
 export const TrackTime = (props) => {
+  const currentTrack = useSelector((store) => store.tracks.currentTrack);
+  const isLiked = useSelector((store) => store.tracks.isLiked);
+  const { theme } = useThemeContext();
+
   return (
     <div className={styles.trackTime}>
-      <svg className={styles.trackTimeSvg} alt="time">
+      <svg
+        className={
+          theme.mode === "dark"
+            ? !isLiked
+              ? styles.trackLikeSvg
+              : classNames(styles.trackLikeSvg, styles.active)
+            : !isLiked
+            ? classNames(styles.trackLikeSvg, styles.light)
+            : classNames(styles.trackLikeSvg, styles.lightImgActive)
+        }
+        alt="like"
+      >
         <use xlinkHref="img/icon/sprite.svg#icon-like"></use>
       </svg>
       <span className={styles.trackTimeText}>{props.time}</span>

@@ -1,9 +1,9 @@
 import { MyPlayListComponent } from "../components/myPlayListComponent/MyPlayListComponent";
 
-export const MyPlayList = ({ isLoading }) => {
+export const MyPlayList = () => {
   return (
     <div>
-      <MyPlayListComponent isLoading={isLoading} />
+      <MyPlayListComponent />
     </div>
   );
 };

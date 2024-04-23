@@ -43,7 +43,7 @@
     color: #7d7b7b;
   }
   
-  .trackTimeSvg {
+  .trackLikeSvg {
     width: 14px;
     height: 12px;
     margin-right: 17px;
@@ -62,5 +62,13 @@
 
   .light {
     color: black;
+  }
+
+  .lightImgActive {
+    stroke: #000000;
+  }
+
+  .active {
+    stroke: #FFFFFF;
   }
   

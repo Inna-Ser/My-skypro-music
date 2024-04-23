@@ -15,7 +15,7 @@ export const authApi = createApi({
                 password,
                 username,
             }) => ({
-                url: "/signup",
+                url: "/signup/",
                 method: "POST",
                 body: {
                     email,
@@ -29,7 +29,7 @@ export const authApi = createApi({
                 email,
                 password,
             }) => ({
-                url: "/login",
+                url: "/login/",
                 method: "POST",
                 body: {
                     email,
