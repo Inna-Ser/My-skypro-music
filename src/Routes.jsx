@@ -12,6 +12,8 @@ import { PageLayout } from "./components/pageLayout/PageLayout";
 
 export const AppRoutes = ({ isLoginMode }) => {
   const { user } = useContext(UserContext);
+  
+  
   return (
     <Routes>
       <Route path="/login" element={<Login />} />

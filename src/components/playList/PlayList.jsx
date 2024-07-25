@@ -24,7 +24,7 @@ export const PlayList = () => {
       setTracksList(data);
       dispatch(setInitialTracks(data));
       setIsLoading(false);
-      dispatch(setIsLiked(true));
+      dispatch(setIsLiked(false));
     }
   }, [data]);
 

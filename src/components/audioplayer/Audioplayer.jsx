@@ -25,7 +25,6 @@ import {
   setNext,
   setPrev,
 } from "../../store/slices/trackSlice.js";
-import { store } from "../../store/store.js";
 import { isDisabled } from "@testing-library/user-event/dist/utils/index.js";
 
 export const Audioplayer = () => {
@@ -52,24 +51,22 @@ export const Audioplayer = () => {
 
   useEffect(() => {
     const handleEnded = () => dispatch(setNext());
-    const handleLoadedMetadata = () => audioRef.current.play();
+    const handleLoadedMetadata = () => {
+      if (isPlaying && audioRef.current) {
+        audioRef.current.play().catch((err) => console.log(err));
+      } else {
+        audioRef.current.pause();
+      }
+    };
     const currentRef = audioRef.current;
 
     currentRef?.addEventListener("ended", handleEnded);
-    audioRef.current.addEventListener("loadedmetadata", handleLoadedMetadata);
+    currentRef?.addEventListener("loadedmetadata", handleLoadedMetadata);
 
     return () => {
       currentRef?.removeEventListener("ended", handleEnded);
       currentRef?.removeEventListener("loadedmetadata", handleLoadedMetadata);
     };
-  }, []);
-
-  useEffect(() => {
-    if (isPlaying && audioRef.current) {
-      audioRef.current.play().catch((err) => console.log(err));
-    } else if (!isPlaying && audioRef.current) {
-      audioRef.current.pause();
-    }
   }, [isPlaying]);
 
   const playNextTrack = () => {
@@ -148,7 +145,7 @@ export const Audioplayer = () => {
                 />
               </div>
             </div>
-            <VolumeBlock audioRef={audioRef} />
+            <VolumeBlock />
           </div>
         </div>
       </div>

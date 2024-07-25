@@ -1,31 +1,24 @@
 import classNames from "classnames";
 import styles from "./VolumeBlock.module.css";
-import { useState } from "react";
 import { useThemeContext } from "../../../themesComponent/ThemesComponent";
 import { useDispatch, useSelector } from "react-redux";
-import { setIsMute } from "../../../store/slices/volumeSlice";
+import { setCurrentVolume, setIsMute } from "../../../store/slices/volumeSlice";
 
-export const VolumeBlock = ({ audioRef }) => {
+export const VolumeBlock = () => {
   const isMute = useSelector((store) => store.volume.isMute);
-  const [volume, setVolume] = useState(null);
   const { theme } = useThemeContext();
   const dispatch = useDispatch();
 
   const changeVolume = (e) => {
-    const currentVolume = e.target.value / 100;
+    const newVolume = e.target.value / 100;
     console.log(e);
-    setVolume(currentVolume);
-    audioRef.current.volume = currentVolume;
+    dispatch(setCurrentVolume(newVolume));
   };
 
   const mute = () => {
-    if (audioRef.current.volume !== 0) {
-      setVolume(0);
-      audioRef.current.volume = 0;
+    if (isMute) {
       dispatch(setIsMute(true));
     } else {
-      setVolume(0.5);
-      audioRef.current.volume = 0.5;
       dispatch(setIsMute(false));
     }
   };
@@ -55,6 +48,7 @@ export const VolumeBlock = ({ audioRef }) => {
             className={classNames(styles.volumeProgressLine, styles._btn)}
             type="range"
             name="range"
+            // value={currentVolume * 100}
             onChange={changeVolume}
           />
         </div>

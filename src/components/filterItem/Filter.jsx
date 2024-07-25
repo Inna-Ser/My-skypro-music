@@ -13,7 +13,7 @@ const FilterAuthor = () => {
         theme.mode === "dark" ? styles.filterListContaner : styles.light
       }
     >
-      {tracks.map(({ author }) => (
+      {filterYears.map(({ author }) => (
         <li className={styles.filterListItem}>{author}</li>
       ))}
     </ul>
